@@ -1,6 +1,10 @@
+import HeroesInput from "../components/HeroesInput"
+
 function ClassicGame() {
   return (
-    <div>ClassicGame</div>
+    <div>ClassicGame
+    <HeroesInput />
+    </div>
   )
 }
 
