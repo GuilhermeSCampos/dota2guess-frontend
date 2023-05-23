@@ -3,20 +3,21 @@ export const mainContext = React.createContext({});
 import PropTypes from "prop-types";
 import { createLocalStorage } from "../utils/initialLocalStorage.js";
 import { getDate } from "../utils/getDate.js";
+import { data } from "../data/data.js"
 
 export const DotaProvider = (props) => {
   const [heroes, setHeroes] = useState();
   const [classicTries, setClassicTries] = useState([]);
   const [quoteTries, setQuoteTries] = useState();
   const [skillTries, setSkillTries] = useState([]);
-  const [quoteStatus, setQuoteStatus] = useState([]);
+  const [quoteStatus, setQuoteStatus] = useState();
   const [classicStatus, setClassicStatus] = useState([]);
   const [skillStatus, setSkillStatus] = useState([]);
 
   //requisição inicial para pegar herois
   const fetchData = async () => {
-    const response = await fetch("https://scary-foal-robe.cyclic.app/status");
-    const data = await response.json();
+    // const response = await fetch("https://scary-foal-robe.cyclic.app/status");
+    // const data = await response.json();
     setHeroes(data.heroes);
     setQuoteStatus(data.quote);
     setClassicStatus(data.classic);
@@ -51,10 +52,10 @@ export const DotaProvider = (props) => {
   };
 
   const submitQuoteHero = (hero) => {
-    const update = [...quoteTries, hero];
+    const update = [hero, ...quoteTries];
     setQuoteTries(update);
     const playerData = JSON.parse(localStorage.getItem("dota2guess"));
-    playerData.games.quote.push(hero);
+    playerData.games.quote.unshift(hero);
     localStorage.setItem("dota2guess", JSON.stringify(playerData));
   };
 

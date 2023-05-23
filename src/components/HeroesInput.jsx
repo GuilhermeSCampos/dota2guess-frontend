@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useProvider } from "../context/Provider";
 
-export default function HeroesInput({ heroes, type }) {
+export default function HeroesInput({ heroes, type, guessed }) {
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
   const { submitQuoteHero } = useProvider();
@@ -21,6 +21,7 @@ export default function HeroesInput({ heroes, type }) {
     if (type === "quote") {
       submitQuoteHero(hero);
     }
+
     setValue("");
   };
 
@@ -28,6 +29,7 @@ export default function HeroesInput({ heroes, type }) {
     <div className="App">
       <div className="search-container">
         <input
+          disabled={guessed}
           type="text"
           id="default-input"
           value={value}
@@ -65,7 +67,12 @@ export default function HeroesInput({ heroes, type }) {
             })}
         </div>
       )}
-      <button onClick={ () => submitChampion(value)}>Enviar</button>
+      <button
+        disabled={!heroes.find((e) => e.name === value)}
+        onClick={() => submitChampion(value)}
+      >
+        Enviar
+      </button>
     </div>
   );
 }
@@ -73,4 +80,5 @@ export default function HeroesInput({ heroes, type }) {
 HeroesInput.propTypes = {
   heroes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   type: PropTypes.string.isRequired,
+  guessed: PropTypes.bool.isRequired,
 };
