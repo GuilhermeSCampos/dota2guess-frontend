@@ -1,8 +1,7 @@
-import { data } from "../data/data";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-export default function HeroesInput() {
-
+export default function HeroesInput({ heroes }) {
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
 
@@ -19,7 +18,6 @@ export default function HeroesInput() {
   return (
     <div className="App">
       <div className="search-container">
-
         <input
           type="text"
           id="default-input"
@@ -30,7 +28,7 @@ export default function HeroesInput() {
       </div>
       {renderList && (
         <div className="dropdown w-64 max-h-56 scrollbar-thin scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
-          {data
+          {heroes
             .filter((val) => {
               if (value == "") {
                 return null;
@@ -61,3 +59,7 @@ export default function HeroesInput() {
     </div>
   );
 }
+
+HeroesInput.propTypes = {
+  heroes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+};

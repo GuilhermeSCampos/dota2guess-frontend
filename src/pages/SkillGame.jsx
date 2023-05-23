@@ -1,6 +1,11 @@
+import HeroesInput from "../components/HeroesInput"
+
 function SkillGame() {
   return (
-    <div>SkillGame</div>
+    <div>
+    <div>QuoteGame</div>
+    <HeroesInput />
+  </div>
   )
 }
 

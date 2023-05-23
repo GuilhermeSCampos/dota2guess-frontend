@@ -1,7 +1,20 @@
+import HeroesInput from "../components/HeroesInput";
+import { useEffect, useState } from "react";
+import { useProvider } from "../context/Provider";
+
 function QuoteGame() {
+  const { heroes, quoteGame, setQuoteGame } = useProvider();
+
+  const { tries } = quoteGame
+  const quoteHeroes = heroes.filter((e) => !tries.includes(e.name))
+
+
   return (
-    <div>QuoteGame</div>
-  )
+    <div>
+      <div>QuoteGame</div>
+      <HeroesInput heroes={quoteHeroes} />
+    </div>
+  );
 }
 
-export default QuoteGame
+export default QuoteGame;

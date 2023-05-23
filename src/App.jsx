@@ -5,7 +5,6 @@ import QuoteGame from "./pages/QuoteGame";
 import SkillGame from "./pages/SkillGame";
 
 function App() {
-
   return (
     <Router>
       <Routes>
