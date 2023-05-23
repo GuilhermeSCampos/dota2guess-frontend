@@ -5,7 +5,6 @@ import { useProvider } from "../context/Provider";
 function QuoteGame() {
   const { heroes, quoteTries, quoteStatus } = useProvider();
   const [quoteHeroes, setQuoteHeroes] = useState();
-  const [gambiarra, setGambiarra] = useState(true);
 
   useEffect(() => {
     if (heroes) {
@@ -23,13 +22,12 @@ function QuoteGame() {
     }
   }, [quoteTries, heroes]);
 
-  useEffect(() => {
-    setGambiarra(!gambiarra)
-  }, [quoteHeroes])
-
   return (
     <div>
       <div>QuoteGame</div>
+      <div>
+        <p>{quoteStatus.quote}</p>
+      </div>
       { heroes && quoteHeroes && quoteTries ? <HeroesInput heroes={quoteHeroes} type={"quote"} /> : <p>carregando</p>}
       <div>
         {quoteStatus? <p>{`${quoteStatus.count} Pessoas já acertaram`}</p> : <p>carregando</p>}
