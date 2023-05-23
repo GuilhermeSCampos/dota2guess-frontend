@@ -1,33 +1,40 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const AudioPlayer = ({ src }) => {
-  const [volume, setVolume] = useState(1);
+  const [audioData, setAudioData] = useState('');
 
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
-  };
+  useEffect(() => {
+    const fetchAudioData = async () => {
+      try {
+        const response = await axios.get(src, {
+          responseType: 'arraybuffer'
+        });
+
+        const audioBuffer = btoa(
+          new Uint8Array(response.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ''
+          )
+        );
+        
+        const audioDataUri = `data:audio/mp3;base64,${audioBuffer}`;
+        
+        setAudioData(audioDataUri);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchAudioData();
+  }, [src]);
 
   return (
-    <div>
-      <audio controls data-volume="0.5">
-        <source src={src} type="audio/mpeg" />
-      </audio>
-
-      <input
-        type="range"
-        min="0"
-        max="1"
-        step="0.1"
-        value={volume}
-        onChange={handleVolumeChange}
-      />
-    </div>
+    <audio controls>
+      <source src={audioData} type="audio/mp3" />
+      Seu navegador não suporta a reprodução de áudio.
+    </audio>
   );
-};
-
-AudioPlayer.propTypes = {
-  src: PropTypes.string.isRequired,
 };
 
 export default AudioPlayer;
