@@ -1,18 +1,27 @@
 import { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { useProvider } from "../context/Provider";
 
-export default function HeroesInput({ heroes }) {
+export default function HeroesInput({ heroes, type }) {
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
+  const { submitQuoteHero } = useProvider();
 
   const onChange = (event) => {
     setValue(event.target.value);
     setRenderList(true);
   };
 
-  const onClick = (event) => {
+  const onClick1 = (event) => {
     setValue(event.target.innerText);
     setRenderList(false);
+  };
+
+  const submitChampion = (hero) => {
+    if (type === "quote") {
+      submitQuoteHero(hero);
+    }
+    setValue("");
   };
 
   return (
@@ -41,7 +50,7 @@ export default function HeroesInput({ heroes }) {
             .map((val) => {
               return (
                 <div
-                  onClick={onClick}
+                  onClick={onClick1}
                   className="dropdown-row flex row gap-2 p-2 bg-gray-700 transition ease-in-out delay-[10ms] hover:bg-gray-500"
                   key={val.name}
                 >
@@ -56,10 +65,12 @@ export default function HeroesInput({ heroes }) {
             })}
         </div>
       )}
+      <button onClick={ () => submitChampion(value)}>Enviar</button>
     </div>
   );
 }
 
 HeroesInput.propTypes = {
   heroes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  type: PropTypes.string.isRequired,
 };

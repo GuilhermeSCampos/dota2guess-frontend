@@ -8,15 +8,9 @@ const createLocalStorage = () => {
   const data = {
     id: todayDate,
     games: {
-      classic: {
-        tries: []
-      },
-      skill: {
-        tries: []
-      },
-      quote: {
-        tries: []
-      }
+      classic: [],
+      skill: [],
+      quote: []
     }
   }
 
