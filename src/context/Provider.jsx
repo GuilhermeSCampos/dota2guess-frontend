@@ -78,6 +78,7 @@ export const DotaProvider = (props) => {
         classicStatus,
         skillStatus,
         submitQuoteHero,
+        setQuoteStatus
       }}
     >
       {props.children}

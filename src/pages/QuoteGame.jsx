@@ -8,6 +8,13 @@ function QuoteGame() {
   const [quoteHeroes, setQuoteHeroes] = useState();
   const [audioClue, setAudioClue] = useState(0);
   const [renderInput, setRenderInput] = useState(true);
+  const [volume, setVolume] = useState(0.5);
+
+  const handleVolumeChange = (event) => {
+    setVolume(event.target.value);
+  };
+
+  console.log(volume)
 
   useEffect(() => {
     if (quoteTries && heroes) {
@@ -17,23 +24,27 @@ function QuoteGame() {
   }, [quoteTries, heroes]);
 
   useEffect(() => {
-    if (quoteTries && quoteTries.includes(quoteStatus.todayhero)) {
+    if (
+      quoteTries &&
+      quoteStatus &&
+      quoteTries.includes(quoteStatus.todayhero)
+    ) {
       setRenderInput(false);
     }
-    if (quoteTries) { 
-      setAudioClue(quoteTries.length); }
+    if (quoteTries) {
+      setAudioClue(quoteTries.length);
+    }
   }, [quoteTries, quoteStatus]);
 
   if (heroes && quoteHeroes && quoteTries && quoteStatus) {
-    console.log(quoteStatus.audiolink);
-
     const playSound = () => {
-      var audio = new Audio(
+      const audio = new Audio(
         quoteStatus.audiolink.substring(
           0,
           quoteStatus.audiolink.indexOf(".mp3") + 4
         )
       );
+      audio.volume = volume;
       audio.play();
     };
 
@@ -47,28 +58,36 @@ function QuoteGame() {
           </p>
 
           <div>
-            <>
-            { renderInput && audioClue >= 5 && <div>
-               <img
-                className="h-12"
-                src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
-                onClick={() => playSound()}
-              />
-              <p>Audio Clue</p>
-            </div> }
-            { renderInput && audioClue < 5 && 
             <div>
-              <img
-                className="h-12 grayscale"
-                src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
+              {renderInput && audioClue >= 5 && (
+                <div>
+                  <img
+                    className="h-12"
+                    src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
+                    onClick={() => playSound()}
+                  />
+                  <p>Audio Clue</p>
+                </div>
+              )}
+              {renderInput && audioClue < 5 && (
+                <div>
+                  <img
+                    className="h-12 grayscale"
+                    src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
+                  />
+                  <p>Audio Clue in {5 - audioClue} tries</p>
+                </div>
+              )}
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.1"
+                value={volume}
+                onChange={handleVolumeChange}
               />
-              <p>Audio Clue in {5 - audioClue } tries</p>
             </div>
-            }
-            </>
-          </div> 
-
-
+          </div>
         </div>
         {renderInput && (
           <HeroesInput
