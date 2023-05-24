@@ -14,7 +14,7 @@ function QuoteGame() {
     setVolume(event.target.value);
   };
 
-  console.log(volume)
+  console.log(volume);
 
   useEffect(() => {
     if (quoteTries && heroes) {
@@ -67,6 +67,14 @@ function QuoteGame() {
                     onClick={() => playSound()}
                   />
                   <p>Audio Clue</p>
+                  <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.1"
+                    value={volume}
+                    onChange={handleVolumeChange}
+                  />
                 </div>
               )}
               {renderInput && audioClue < 5 && (
@@ -78,14 +86,6 @@ function QuoteGame() {
                   <p>Audio Clue in {5 - audioClue} tries</p>
                 </div>
               )}
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                value={volume}
-                onChange={handleVolumeChange}
-              />
             </div>
           </div>
         </div>

@@ -16,8 +16,8 @@ export const DotaProvider = (props) => {
 
   //requisição inicial para pegar herois
   const fetchData = async () => {
-    // const response = await fetch("https://scary-foal-robe.cyclic.app/status");
-    // const data = await response.json();
+    const response = await fetch("https://scary-foal-robe.cyclic.app/status");
+    const data = await response.json();
     setHeroes(data.heroes);
     setQuoteStatus(data.quote);
     setClassicStatus(data.classic);
@@ -34,6 +34,9 @@ export const DotaProvider = (props) => {
         playerData.games.classic = [];
         playerData.games.skill = [];
         playerData.games.quote = [];
+        setClassicTries([]);
+        setQuoteTries([]);
+        setSkillTries([]);
         localStorage.setItem("dota2guess", JSON.stringify(playerData));
       } else {
         const { classic, skill, quote } = playerData.games;
