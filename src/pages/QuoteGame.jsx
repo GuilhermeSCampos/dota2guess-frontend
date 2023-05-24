@@ -2,6 +2,7 @@ import HeroesInput from "../components/HeroesInput";
 import { useEffect, useState } from "react";
 import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
+import TryCard from "../components/TryCard";
 
 function QuoteGame() {
   const { heroes, quoteTries, quoteStatus } = useProvider();
@@ -13,8 +14,6 @@ function QuoteGame() {
   const handleVolumeChange = (event) => {
     setVolume(event.target.value);
   };
-
-  console.log(volume);
 
   useEffect(() => {
     if (quoteTries && heroes) {
@@ -110,31 +109,9 @@ function QuoteGame() {
 
             if (!hero) return null;
             if (heroName === quoteStatus.todayhero)
-              return (
-                <div
-                  className="flex flex-col items-center border-4 border-zinc-50 pt-2 w-64 h-20 mt-2 bg-green-600"
-                  key={hero}
-                >
-                  <img
-                    className="w-16 border-solid border-2 border-black"
-                    src={hero.img}
-                  />
-                  <span>{heroName}</span>
-                </div>
-              );
+              return <TryCard key={heroName} hero={hero} correctHero={true} />;
             else
-              return (
-                <div
-                  className="flex flex-col items-center pt-4 border border-zinc-300 w-64 h-20 mt-2 bg-red-600"
-                  key={hero}
-                >
-                  <img
-                    className="w-16 border-solid border-2 border-black"
-                    src={hero.img}
-                  />
-                  <span>{heroName}</span>
-                </div>
-              );
+              return <TryCard key={heroName} hero={hero} correctHero={false} />;
           })}
         </div>
         <div>{!renderInput && <p>Acertou!</p>}</div>

@@ -9,15 +9,15 @@ export const DotaProvider = (props) => {
   const [heroes, setHeroes] = useState();
   const [classicTries, setClassicTries] = useState([]);
   const [quoteTries, setQuoteTries] = useState();
-  const [skillTries, setSkillTries] = useState([]);
+  const [skillTries, setSkillTries] = useState();
   const [quoteStatus, setQuoteStatus] = useState();
   const [classicStatus, setClassicStatus] = useState([]);
-  const [skillStatus, setSkillStatus] = useState([]);
+  const [skillStatus, setSkillStatus] = useState();
 
   //requisição inicial para pegar herois
   const fetchData = async () => {
-    const response = await fetch("https://scary-foal-robe.cyclic.app/status");
-    const data = await response.json();
+    // const response = await fetch("https://scary-foal-robe.cyclic.app/status");
+    // const data = await response.json();
     setHeroes(data.heroes);
     setQuoteStatus(data.quote);
     setClassicStatus(data.classic);
@@ -62,6 +62,14 @@ export const DotaProvider = (props) => {
     localStorage.setItem("dota2guess", JSON.stringify(playerData));
   };
 
+  const submitSkillHero = (hero) => {
+    const update = [hero, ...skillTries];
+    setSkillTries(update);
+    const playerData = JSON.parse(localStorage.getItem("dota2guess"));
+    playerData.games.skill.unshift(hero);
+    localStorage.setItem("dota2guess", JSON.stringify(playerData));
+  } 
+
   useEffect(() => {
     fetchData();
     checkLocalStorage();
@@ -81,7 +89,8 @@ export const DotaProvider = (props) => {
         classicStatus,
         skillStatus,
         submitQuoteHero,
-        setQuoteStatus
+        setQuoteStatus,
+        submitSkillHero
       }}
     >
       {props.children}
@@ -90,7 +99,7 @@ export const DotaProvider = (props) => {
 };
 
 DotaProvider.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  children: PropTypes.shape().isRequired,
 };
 
 export const useProvider = () => React.useContext(mainContext);

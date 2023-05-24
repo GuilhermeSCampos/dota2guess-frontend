@@ -8,7 +8,7 @@ const SUM_QUOTE_COUNT_URL =
 export default function HeroesInput({ heroes, type }) {
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
-  const { submitQuoteHero, quoteStatus, setQuoteStatus } = useProvider();
+  const { submitQuoteHero, quoteStatus, setQuoteStatus, submitSkillHero } = useProvider();
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -28,6 +28,10 @@ export default function HeroesInput({ heroes, type }) {
         const newStatus = {...quoteStatus};
         setQuoteStatus({...newStatus, count: newStatus.count + 1})
       }
+    }
+
+    if (type === "skill") {
+      submitSkillHero(hero)
     }
 
     setValue("");

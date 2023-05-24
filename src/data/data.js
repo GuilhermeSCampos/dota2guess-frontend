@@ -4,22 +4,23 @@
 export const data = {
   "classic": {
     "count": 0,
-      "todayhero": "Timbersaw",
-        "lasthero": "Anti-Mage"
+    "todayhero": "Timbersaw",
+    "lasthero": "Anti-Mage"
   },
   "quote": {
     "count": 1,
-      "todayhero": "Viper",
-        "lasthero": "Bane",
-          "quote": "I fly into a rage.",
-            "audiolink": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/92/Vo_viper_vipe_move_14.mp3/revision/latest?cb=20201022213044"
+    "todayhero": "Viper",
+    "lasthero": "Bane",
+    "quote": "I fly into a rage.",
+    "audiolink": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/92/Vo_viper_vipe_move_14.mp3/revision/latest?cb=20201022213044"
   },
   "skill": {
     "count": 0,
-      "todayhero": "Clinkz",
-        "lasthero": "Wraith King",
-          "skillimg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/clinkz_death_pact.png",
-            "skillname": "DEATH PACT"
+    "todayhero": "Clinkz",
+    "lasthero": "Wraith King",
+    "skillimg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/clinkz_death_pact.png",
+    "skillname": "DEATH PACT",
+    "rotation": 3
   },
   "heroes": [
     {
