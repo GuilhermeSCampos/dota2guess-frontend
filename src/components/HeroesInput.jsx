@@ -5,10 +5,20 @@ import { useProvider } from "../context/Provider";
 const SUM_QUOTE_COUNT_URL =
   "https://dota2guess-backend.vercel.app/status/quotecount";
 
+const SUM_SKILL_COUNT_URL =
+  "https://dota2guess-backend.vercel.app/status/skillcount";
+
 export default function HeroesInput({ heroes, type }) {
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
-  const { submitQuoteHero, quoteStatus, setQuoteStatus, submitSkillHero } = useProvider();
+  const {
+    submitQuoteHero,
+    quoteStatus,
+    setQuoteStatus,
+    submitSkillHero,
+    skillStatus,
+    setSkillStatus
+  } = useProvider();
 
   const onChange = (event) => {
     setValue(event.target.value);
@@ -25,13 +35,18 @@ export default function HeroesInput({ heroes, type }) {
       submitQuoteHero(hero);
       if (value === quoteStatus.todayhero) {
         await fetch(SUM_QUOTE_COUNT_URL, { method: "PUT" });
-        const newStatus = {...quoteStatus};
-        setQuoteStatus({...newStatus, count: newStatus.count + 1})
+        const newStatus = { ...quoteStatus };
+        setQuoteStatus({ ...newStatus, count: newStatus.count + 1 });
       }
     }
 
     if (type === "skill") {
-      submitSkillHero(hero)
+      submitSkillHero(hero);
+        if(value === skillStatus.todayhero) {
+          await fetch(SUM_SKILL_COUNT_URL, { method: "PUT" });
+          const newStatus = { ...skillStatus };
+          setSkillStatus({ ...newStatus, count: newStatus.count + 1 });
+        }
     }
 
     setValue("");

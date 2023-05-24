@@ -82,6 +82,9 @@ function SkillGame() {
             <HeroesInput heroes={skillHeroes} guessed={false} type="skill" />
           )}
         </div>
+        <div className="text-white">
+          <p>{`${skillStatus.count} people already found out`}</p>
+        </div>
         <div>
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
