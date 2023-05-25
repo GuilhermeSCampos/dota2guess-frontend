@@ -7,11 +7,11 @@ import { data } from "../data/data.js"
 
 export const DotaProvider = (props) => {
   const [heroes, setHeroes] = useState();
-  const [classicTries, setClassicTries] = useState([]);
+  const [classicTries, setClassicTries] = useState();
   const [quoteTries, setQuoteTries] = useState();
   const [skillTries, setSkillTries] = useState();
   const [quoteStatus, setQuoteStatus] = useState();
-  const [classicStatus, setClassicStatus] = useState([]);
+  const [classicStatus, setClassicStatus] = useState();
   const [skillStatus, setSkillStatus] = useState();
 
   //requisição inicial para pegar herois
@@ -70,6 +70,14 @@ export const DotaProvider = (props) => {
     localStorage.setItem("dota2guess", JSON.stringify(playerData));
   } 
 
+  const submitClassicHero = (hero) => {
+    const update = [hero, ...classicTries];
+    setClassicTries(update)
+    const playerData = JSON.parse(localStorage.getItem("dota2guess"));
+    playerData.games.classic.unshift(hero);
+    localStorage.setItem("dota2guess", JSON.stringify(playerData));
+  }
+
   useEffect(() => {
     fetchData();
     checkLocalStorage();
@@ -91,7 +99,8 @@ export const DotaProvider = (props) => {
         submitQuoteHero,
         setQuoteStatus,
         submitSkillHero,
-        setSkillStatus
+        setSkillStatus,
+        submitClassicHero
       }}
     >
       {props.children}

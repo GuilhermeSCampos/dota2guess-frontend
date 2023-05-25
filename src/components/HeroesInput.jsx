@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useProvider } from "../context/Provider";
 
@@ -17,12 +17,20 @@ export default function HeroesInput({ heroes, type }) {
     setQuoteStatus,
     submitSkillHero,
     skillStatus,
-    setSkillStatus
+    setSkillStatus,
+    submitClassicHero,
   } = useProvider();
 
-  const onChange = (event) => {
-    setValue(event.target.value);
-    setRenderList(true);
+  const onChange = ({ target }) => {
+    const { value } = target;
+    setValue(value);
+    if (
+      heroes.some((e) => e.name.toLowerCase().startsWith(value.toLowerCase())) && value !== ""
+    ) {
+      setRenderList(true);
+    } else {
+      setRenderList(false);
+    }
   };
 
   const onClick1 = (event) => {
@@ -31,6 +39,10 @@ export default function HeroesInput({ heroes, type }) {
   };
 
   const submitChampion = async (hero) => {
+    if (!heroes.some((e) => e.name === hero)) {
+      return setValue("");
+    }
+
     if (type === "quote") {
       submitQuoteHero(hero);
       if (value === quoteStatus.todayhero) {
@@ -42,18 +54,22 @@ export default function HeroesInput({ heroes, type }) {
 
     if (type === "skill") {
       submitSkillHero(hero);
-        if(value === skillStatus.todayhero) {
-          await fetch(SUM_SKILL_COUNT_URL, { method: "PUT" });
-          const newStatus = { ...skillStatus };
-          setSkillStatus({ ...newStatus, count: newStatus.count + 1 });
-        }
+      if (value === skillStatus.todayhero) {
+        await fetch(SUM_SKILL_COUNT_URL, { method: "PUT" });
+        const newStatus = { ...skillStatus };
+        setSkillStatus({ ...newStatus, count: newStatus.count + 1 });
+      }
     }
 
-    setValue("");
+    if (type === "classic") {
+      submitClassicHero(hero);
+    }
+
+    return setValue("");
   };
 
   return (
-    <div className="flex flex-col pt-4 gap-2 relative">
+    <div className="flex  flex-col pt-4 gap-2 bg-pink-400 relative">
       <div className="flex flex-row pt-4 gap-2">
         <div className="search-container">
           <input
@@ -66,7 +82,7 @@ export default function HeroesInput({ heroes, type }) {
         </div>
 
         <button
-          disabled={!heroes.find((e) => e.name === value)}
+          disabled={!heroes.some((e) => e.name.toLowerCase() === value.toLowerCase())}
           onClick={() => submitChampion(value)}
           type="button"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -89,7 +105,10 @@ export default function HeroesInput({ heroes, type }) {
       </div>
 
       {renderList && (
-        <div className="absolute pt-16 mr-10 flex items-center justify-center z-50">
+        <div
+          onClick={(event) => console.log(event)}
+          className= {`${renderList ? "" : "hidden"}  absolute pt-16 mr-10 flex items-center justify-center z-50`}
+        >
           <div className="dropdown w-64 max-h-56 scrollbar-thin scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
               .filter((val) => {

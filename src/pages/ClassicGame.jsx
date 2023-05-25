@@ -1,15 +1,38 @@
-import HeroesInput from "../components/HeroesInput"
-import { useProvider } from "../context/Provider"
+import { useEffect, useState } from "react";
+import HeroesInput from "../components/HeroesInput";
+import { useProvider } from "../context/Provider";
+import ReactLoading from "react-loading";
 
 function ClassicGame() {
+  const { heroes, classicTries, classicStatus } = useProvider();
+  const [classicHeroes, setClassicHeroes] = useState();
 
-  const { heroes } = useProvider();
+  useEffect(() => {
+    if (classicTries && heroes) {
+      const filteredHeroes = heroes.filter(
+        (e) => !classicTries.includes(e.name)
+      );
+      setClassicHeroes(filteredHeroes);
+    }
+  }, [classicTries, heroes]);
 
-  return (
-    <div className="text-white">ClassicGame
-    <HeroesInput heroes={heroes} type="classic"/>
-    </div>
-  )
+  if (heroes && classicTries && classicHeroes && classicStatus) {
+    return (
+      <div className="text-white">
+        ClassicGame
+        <HeroesInput
+          heroes={classicHeroes}
+          type="classic"
+          guessed={classicTries.includes(classicStatus.todayhero)}
+        />
+        {/* <div>
+    {classicTries.map((e) => {
+      
+    })}
+  </div> */}
+      </div>
+    );
+  }
 }
 
-export default ClassicGame
+export default ClassicGame;
