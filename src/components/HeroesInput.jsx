@@ -69,7 +69,7 @@ export default function HeroesInput({ heroes, type }) {
   };
 
   return (
-    <div className="flex  flex-col pt-4 gap-2 bg-pink-400 relative">
+    <div className="flex  flex-col mt-12 pt-2 gap-2">
       <div className="flex flex-row pt-4 gap-2">
         <div className="search-container">
           <input
@@ -77,7 +77,7 @@ export default function HeroesInput({ heroes, type }) {
             id="default-input"
             value={value}
             onChange={onChange}
-            className="w-60 bg-gray-700 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className="z-50 w-60 bg-gray-700 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
           />
         </div>
 
@@ -85,7 +85,7 @@ export default function HeroesInput({ heroes, type }) {
           disabled={!heroes.some((e) => e.name.toLowerCase() === value.toLowerCase())}
           onClick={() => submitChampion(value)}
           type="button"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="z-50 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           <svg
             aria-hidden="true"
@@ -106,8 +106,7 @@ export default function HeroesInput({ heroes, type }) {
 
       {renderList && (
         <div
-          onClick={(event) => console.log(event)}
-          className= {`${renderList ? "" : "hidden"}  absolute pt-16 mr-10 flex items-center justify-center z-50`}
+          className="absolute mt-16 mr-10 flex items-center justify-center"
         >
           <div className="dropdown w-64 max-h-56 scrollbar-thin scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
