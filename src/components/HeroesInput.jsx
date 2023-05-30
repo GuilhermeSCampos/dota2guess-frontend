@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { useProvider } from "../context/Provider";
 
@@ -38,10 +38,8 @@ export default function HeroesInput({ heroes, type }) {
     setRenderList(false);
   };
 
-  const submitChampion = async (hero) => {
-    if (!heroes.some((e) => e.name === hero)) {
-      return setValue("");
-    }
+  const submitChampion = async (heroName) => {
+    const hero = heroes.find((e) => e.name.toLowerCase() === heroName.toLowerCase()).name
 
     if (type === "quote") {
       submitQuoteHero(hero);

@@ -48,7 +48,7 @@ function SkillGame() {
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div>
+      <div className="text-white flex flex-col lg:mt-56 items-center content-center">
         <div>
           <div>
             <h2 className="text-white">which hero is this skill from</h2>

@@ -18,7 +18,7 @@ function ClassicGame() {
 
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
-      <div className="text-white">
+      <div className="text-white flex flex-col lg:mt-56 items-center content-center">
         ClassicGame
         <HeroesInput
           heroes={classicHeroes}
