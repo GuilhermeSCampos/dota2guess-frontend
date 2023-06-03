@@ -4,6 +4,7 @@ import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
 
+
 function SkillGame() {
   const { heroes, skillTries, skillStatus } = useProvider();
   const [skillHeroes, setSkillHeroes] = useState();
