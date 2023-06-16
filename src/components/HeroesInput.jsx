@@ -25,7 +25,10 @@ export default function HeroesInput({ heroes, type }) {
     const { value } = target;
     setValue(value);
     if (
-      heroes.some((e) => e.name.toLowerCase().startsWith(value.toLowerCase())) && value !== ""
+      heroes.some((e) =>
+        e.name.toLowerCase().startsWith(value.toLowerCase())
+      ) &&
+      value !== ""
     ) {
       setRenderList(true);
     } else {
@@ -39,7 +42,9 @@ export default function HeroesInput({ heroes, type }) {
   };
 
   const submitChampion = async (heroName) => {
-    const hero = heroes.find((e) => e.name.toLowerCase() === heroName.toLowerCase()).name
+    const hero = heroes.find(
+      (e) => e.name.toLowerCase() === heroName.toLowerCase()
+    ).name;
 
     if (type === "quote") {
       submitQuoteHero(hero);
@@ -68,22 +73,27 @@ export default function HeroesInput({ heroes, type }) {
 
   return (
     <div className="flex  flex-col mt-12 pt-2 gap-2">
-      <div className="flex flex-row pt-4 gap-2">
-        <div className="search-container">
+      <div className="flex flex-row pt-4 gap-2 ">
+        <div className="search-container w-64">
           <input
             type="text"
             id="default-input"
             value={value}
             onChange={onChange}
-            className="z-50 w-60 bg-gray-700 border border-gray-400 text-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            className={`{z-50 bg-gray-700 border border-gray-400
+               text-gray-200 text-sm rounded-lg focus:ring-blue-500
+                focus:border-black-500 block w-full p-2.5
+                 hover:bg-gray-600 hover:transition duration-300 delay-0`}
           />
         </div>
 
         <button
-          disabled={!heroes.some((e) => e.name.toLowerCase() === value.toLowerCase())}
+          disabled={
+            !heroes.some((e) => e.name.toLowerCase() === value.toLowerCase())
+          }
           onClick={() => submitChampion(value)}
           type="button"
-          className="z-50 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="z-50 text-white bg-blue-700 hover:bg-blue-800 hover:transition duration-300 delay-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           <svg
             aria-hidden="true"
@@ -103,9 +113,7 @@ export default function HeroesInput({ heroes, type }) {
       </div>
 
       {renderList && (
-        <div
-          className="absolute mt-16 mr-10 flex items-center justify-center"
-        >
+        <div className="absolute mt-16 mr-10 flex items-center justify-center">
           <div className="dropdown w-64 max-h-56 scrollbar-thin scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
               .filter((val) => {

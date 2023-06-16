@@ -43,30 +43,30 @@ function ClassicCard({ correctHero, selectedHero }) {
 
   return (
     <div className="flex items-center justify-center w-3/4 mx-auto my-2">
-      <img src={img} className="w-1/12 border mx-2 rounded-xl " />
+      <img src={img} className="w-1/12 border mx-1 rounded-xl " />
       <div
-        className={`w-1/12 border mx-2 justify-center flex py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 justify-center flex py-5 rounded-xl text-lg ${
           primaryAttr1 !== primaryAttr2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >
         {primaryAttr2}
       </div>
       <div
-        className={`w-1/12 border mx-2 justify-center flex py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 justify-center flex py-5 rounded-xl text-lg ${
           gender1 !== gender2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >
         {gender2}
       </div>
       <div
-        className={`w-1/12 border mx-2 justify-center flex py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 justify-center flex py-5 rounded-xl text-lg ${
           attackType1 !== attackType2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >
         {attackType2}
       </div>
       <div
-        className={`w-1/12 border mx-2 flex justify-center py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-5 rounded-xl text-lg ${
           Number(baseDefense1) !== Number(baseDefense2)
             ? "bg-red-500"
             : "bg-[#00ff40a3]"
@@ -76,7 +76,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseDefense1), Number(baseDefense2))}
       </div>
       <div
-        className={`w-1/12 border mx-2 flex justify-center py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-5 rounded-xl text-lg ${
           baseHp1 !== baseHp2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >
@@ -84,7 +84,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseHp1), Number(baseHp2))}
       </div>
       <div
-        className={`w-1/12 border mx-2 flex justify-center py-5 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-5 rounded-xl text-lg ${
           baseMp1 !== baseMp2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >
@@ -92,7 +92,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseMp1), Number(baseMp2))}
       </div>
       <div
-        className={`w-1/12 border-x border-y mx-2 flex justify-center py-5 rounded-xl text-lg ${
+        className={`w-1/12 border-x border-y mx-1 flex justify-center py-5 rounded-xl text-lg ${
           moveSpeed1 !== moveSpeed2 ? "bg-red-500" : "bg-[#00ff40a3]"
         }`}
       >

@@ -62,6 +62,12 @@ body {
   position: absolute;
   bottom: 4px
 }
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+
 .gg-arrow-down::after {
   width: 8px;
   height: 8px;
@@ -75,4 +81,23 @@ body {
   height: 20px;
   left: 10px;
   background: currentColor
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #c66767; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #494848; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #272727; 
 }
