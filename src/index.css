@@ -18,15 +18,15 @@ body {
 .gg-arrow-up {
   box-sizing: border-box;
   position: relative;
-  display: block;
+  display: flex;
   transform: scale(var(--ggs,1));
-  width: 22px;
-  height: 22px
+  width: 24px;
+  height: 24px
 }
 .gg-arrow-up::after,
 .gg-arrow-up::before {
   content: "";
-  display: block;
+  display: flex;
   box-sizing: border-box;
   position: absolute;
   top: 4px
@@ -41,7 +41,7 @@ body {
 }
 .gg-arrow-up::before {
   width: 2px;
-  height: 16px;
+  height: 20px;
   left: 10px;
   background: currentColor
 }
@@ -72,7 +72,7 @@ body {
 }
 .gg-arrow-down::before {
   width: 2px;
-  height: 16px;
+  height: 20px;
   left: 10px;
   background: currentColor
 }

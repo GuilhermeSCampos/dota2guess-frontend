@@ -7,12 +7,16 @@ import ClassicCard from "../components/ClassicCard";
 function ClassicGame() {
   const { heroes, classicTries, classicStatus } = useProvider();
   const [classicHeroes, setClassicHeroes] = useState();
+  const [renderInput, setRenderInput] = useState(true);
 
   useEffect(() => {
     if (classicTries && heroes) {
       const filteredHeroes = heroes.filter(
         (e) => !classicTries.includes(e.name)
       );
+      if (classicTries.includes(classicStatus.todayhero)) {
+        setRenderInput(false);
+      }
       setClassicHeroes(filteredHeroes);
     }
   }, [classicTries, heroes]);
@@ -21,29 +25,32 @@ function ClassicGame() {
     return (
       <div className="text-white flex flex-col lg:mt-56 items-center content-center">
         ClassicGame
-        <HeroesInput
-          heroes={classicHeroes}
-          type="classic"
-          guessed={classicTries.includes(classicStatus.todayhero)}
-        />
-        <div className="w-screen border-2 ">
-          <div className="flex justify-center w-2/4 mx-auto">
-            <h3 className="mr-16 ml-16">Hero</h3>
-            <h3 className="mr-12 ">Attribute</h3>
-            <h3 className="mr-20">Gender</h3>
-            <h3 className="mr-12">Attack Type</h3>
-            <h3 className="mr-12">Base Attack</h3>
-            <h3 className="mr-12">Base Armor</h3>
-            <h3 className="mr-12">Base Hp</h3>
-            <h3 className="mr-12">Base Mp</h3>
-            <h3 className="mr-36">Movespeed</h3>
+        {renderInput && (
+          <HeroesInput
+            heroes={classicHeroes}
+            type="classic"
+            guessed={classicTries.includes(classicStatus.todayhero)}
+          />
+        )}
+        <div className="w-screen mt-10">
+          <div className="flex items-center justify-center w-3/4 mx-auto my-2">
+            <div className="w-1/12 mx-2 justify-center flex">Hero</div>
+            <div className="w-1/12 mx-2 justify-center flex">Primary Attr</div>
+            <div className="w-1/12 mx-2 justify-center flex">Gender</div>
+            <div className="w-1/12 mx-2 justify-center flex">Attack Type</div>
+            <div className="w-1/12 mx-2 justify-center flex">Base Defense</div>
+            <div className="w-1/12 mx-2 justify-center flex">Base HP</div>
+            <div className="w-1/12 mx-2 justify-center flex">Base MP</div>
+            <div className="w-1/12 mx-2 justify-center flex">Move Speed</div>
           </div>
           {classicTries.map((e) => {
-            return (  
+            return (
               <ClassicCard
                 key={e.name}
                 selectedHero={heroes.find((e2) => e2.name === e)}
-                correctHero={heroes.find((e2) => e2.name === classicStatus.todayhero)}
+                correctHero={heroes.find(
+                  (e2) => e2.name === classicStatus.todayhero
+                )}
               />
             );
           })}
