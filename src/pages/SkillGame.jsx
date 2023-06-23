@@ -3,6 +3,7 @@ import HeroesInput from "../components/HeroesInput";
 import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
+import Header from "../components/Header";
 
 
 function SkillGame() {
@@ -49,7 +50,8 @@ function SkillGame() {
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div className="text-white flex flex-col lg:mt-56 items-center content-center">
+      <div className="fade-in text-white flex flex-col lg:mt-56 items-center content-center">
+        <Header />
         <div>
           <div>
             <h2 className="text-white">which hero is this skill from</h2>

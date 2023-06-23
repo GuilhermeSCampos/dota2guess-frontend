@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { useProvider } from "../context/Provider";
+import { GiBroadDagger } from "react-icons/gi";
 
 const SUM_QUOTE_COUNT_URL =
   "https://dota2guess-backend.vercel.app/status/quotecount";
@@ -38,6 +39,7 @@ export default function HeroesInput({ heroes, type }) {
 
   const onClick1 = (event) => {
     setValue(event.target.innerText);
+    console.log(event.target.value);
     setRenderList(false);
   };
 
@@ -72,20 +74,27 @@ export default function HeroesInput({ heroes, type }) {
   };
 
   return (
-    <div className="flex  flex-col mt-12 pt-2 gap-2">
-      <div className="flex flex-row pt-4 gap-2 ">
-        <div className="search-container w-64">
-          <input
-            type="text"
-            id="default-input"
-            value={value}
-            onChange={onChange}
-            className={`{z-50 bg-gray-700 border border-gray-400
-               text-gray-200 text-sm rounded-lg focus:ring-blue-500
-                focus:border-black-500 block w-full p-2.5
+    <div
+      className="flex flex-col mt-12 pt-2"
+    >
+      <div className="flex flex-row">
+        <input
+          type="text"
+          id="default-input"
+          value={value}
+          onChange={onChange}
+          onFocus={({ target }) =>
+            heroes.some((e) =>
+              e.name.toLowerCase().startsWith(target.value.toLowerCase())
+            ) && target.value !== ""
+              ? setRenderList(true)
+              : setRenderList(false)
+          }
+          className={`z-50 bg-gray-700 border border-gray-400
+               text-gray-200 text-xl rounded-lg focus:ring-blue-500
+                focus:border-black-500 block mx-2 w-11/12 p-2.5
                  hover:bg-gray-600 hover:transition duration-300 delay-0`}
-          />
-        </div>
+        />
 
         <button
           disabled={
@@ -93,28 +102,21 @@ export default function HeroesInput({ heroes, type }) {
           }
           onClick={() => submitChampion(value)}
           type="button"
-          className="z-50 text-white bg-blue-700 hover:bg-blue-800 hover:transition duration-300 delay-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          className="z-50 text-white bg-gray-700 w-2/12 hover:bg-gray-400 hover:transition duration-300 delay-0 focus:ring-4 focus:outline-none
+           focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex 
+           items-center mr-2"
         >
-          <svg
-            aria-hidden="true"
-            className="w-5 h-5"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
+          <div className="mx-auto">
+            <GiBroadDagger size={22} />
+          </div>
+
           <span className="sr-only">Icon description</span>
         </button>
       </div>
 
       {renderList && (
-        <div className="absolute mt-16 mr-10 flex items-center justify-center">
-          <div className="dropdown w-64 max-h-56 scrollbar-thin scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
+        <div className="flex w-1/2 ">
+          <div className="absolute ml-2 w-2/12 max-h-72 scrollbar scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
               .filter((val) => {
                 if (value == "") {
@@ -129,7 +131,7 @@ export default function HeroesInput({ heroes, type }) {
                 return (
                   <div
                     onClick={onClick1}
-                    className="dropdown-row flex row gap-2 p-2 bg-gray-700 transition ease-in-out delay-[10ms] hover:bg-gray-500"
+                    className="dropdown-row flex row gap-2 rounded p-2 bg-gray-700 transition ease-in-out delay-[40ms] hover:bg-gray-500"
                     key={val.name}
                   >
                     <img

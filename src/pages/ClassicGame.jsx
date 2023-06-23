@@ -3,6 +3,7 @@ import HeroesInput from "../components/HeroesInput";
 import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
 import ClassicCard from "../components/ClassicCard";
+import Header from "../components/Header";
 
 function ClassicGame() {
   const { heroes, classicTries, classicStatus } = useProvider();
@@ -23,8 +24,9 @@ function ClassicGame() {
 
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
-      <div className="text-white w-11/12 mx-auto flex flex-col lg:mt-56 items-center content-center">
-        <div className="border flex flex-col text-center w-1/5">
+      <div className="fade-in text-white w-11/12 mx-auto flex flex-col lg:mt-56 items-center content-center">
+        <Header />
+        <div className=" flex flex-col text-center w-1/5">
           <h3 className="text-3xl">{`Guess Today's Hero!`}</h3>
           <div className="">
             {classicTries.length === 0 && <p>Type a hero to begin</p>}

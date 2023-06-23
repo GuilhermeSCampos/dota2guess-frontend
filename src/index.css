@@ -3,7 +3,57 @@
 @tailwind utilities;
 
 body {
-  background-color: #322564;
+  background-image: url("assets/jugger.jpg");
+  background-repeat: no-repeat;
+  background-size: fit-content;
+  background-color: rgba(0, 0, 0, 0); /* Valor de opacidade: 0.5 */
+  font-family: "Nunito", sans-serif;
+}
+
+.icon {
+  /* Estilos normais do ícone */
+  color: rgb(184, 177, 177); /* Define a cor padrão do ícone */
+  transition: 0.3s ease-in-out;
+}
+
+.icon:hover {
+  color: rgb(115, 115, 117); /* Define a cor do ícone quando estiver em hover */
+}
+
+.title {
+  font-family: 'Anton', sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+/* The slow way */
+.make-it-slow {
+}
+
+/* Transition to a bigger shadow on hover */
+
+.game-card {
+  font-family: "Nunito", sans-serif;
+  transition: 0.3s ease-in-out;
+}
+
+.game-card:hover {
+  -webkit-box-shadow:0px 0px 5px 2px rgb(233, 220, 222);
+-moz-box-shadow: 0px 0px 5px 2px rgb(255, 255, 255);
+box-shadow: 0px 0px 5px 2px rgb(255, 255, 255);
 }
 
 .grayscale-image {
@@ -19,9 +69,9 @@ body {
   box-sizing: border-box;
   position: relative;
   display: flex;
-  transform: scale(var(--ggs,1));
+  transform: scale(var(--ggs, 1));
   width: 24px;
-  height: 24px
+  height: 24px;
 }
 .gg-arrow-up::after,
 .gg-arrow-up::before {
@@ -29,7 +79,7 @@ body {
   display: flex;
   box-sizing: border-box;
   position: absolute;
-  top: 4px
+  top: 4px;
 }
 .gg-arrow-up::after {
   width: 8px;
@@ -37,22 +87,22 @@ body {
   border-top: 2px solid;
   border-left: 2px solid;
   transform: rotate(45deg);
-  left: 7px
+  left: 7px;
 }
 .gg-arrow-up::before {
   width: 2px;
   height: 20px;
   left: 10px;
-  background: currentColor
+  background: currentColor;
 }
 
 .gg-arrow-down {
   box-sizing: border-box;
   position: relative;
   display: block;
-  transform: scale(var(--ggs,1));
+  transform: scale(var(--ggs, 1));
   width: 22px;
-  height: 22px
+  height: 22px;
 }
 .gg-arrow-down::after,
 .gg-arrow-down::before {
@@ -60,13 +110,13 @@ body {
   display: block;
   box-sizing: border-box;
   position: absolute;
-  bottom: 4px
+  bottom: 4px;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }
-
 
 .gg-arrow-down::after {
   width: 8px;
@@ -74,13 +124,13 @@ textarea:focus, input:focus{
   border-bottom: 2px solid;
   border-left: 2px solid;
   transform: rotate(-45deg);
-  left: 7px
+  left: 7px;
 }
 .gg-arrow-down::before {
   width: 2px;
   height: 20px;
   left: 10px;
-  background: currentColor
+  background: currentColor;
 }
 
 ::-webkit-scrollbar {
@@ -89,15 +139,15 @@ textarea:focus, input:focus{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #c66767; 
+  background: #c66767;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #494848; 
+  background: #494848;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #272727; 
+  background: #272727;
 }

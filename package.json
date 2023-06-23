@@ -10,14 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.7.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.5",
     "axios": "^1.4.0",
+    "framer-motion": "^10.12.16",
     "howler": "^2.2.3",
     "lucide-react": "^0.244.0",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "react-loading": "^2.0.3",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "tw-elements": "^1.0.0-beta2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
+import Header from "../components/Header";
 
 function QuoteGame() {
   const { heroes, quoteTries, quoteStatus } = useProvider();
@@ -48,7 +49,8 @@ function QuoteGame() {
     };
 
     return (
-      <div className="text-white flex flex-col lg:mt-56 items-center content-center">
+      <div className="fade-in text-white flex flex-col lg:mt-56 items-center content-center">
+        <Header />
         <div className="border border-r-2 border-red-500 flex flex-col items-center content-center">
           <h1 className="text-2xl">Which hero says</h1>
 
