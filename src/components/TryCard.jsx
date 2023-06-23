@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 function TryCard({ correctHero, hero }) {
   return (
     <div
-      className={`flex flex-col items-center border-zinc-50 pt-2 w-64 h-20 mt-2 ${
-        correctHero ? "bg-green-600 border-4" : "bg-red-600 border-2"
+      className={`flex flex-col mx-auto items-center max-h-28 rounded-xl border-zinc-50 pt-2 w-1/2  mt-2 ${
+        correctHero ? "bg-green-600 hover:bg-green-500/90 correct-answer border-2" : "bg-red-600 hover:bg-red-500/90 border wrong-answer"
       }`}
     >
-      <img className="w-16 border-solid border-2 border-black" src={hero.img} />
-      <span>{hero.name}</span>
+      <img className="w-3/12 border-solid border-2 rounded border-black" src={hero.img} />
+      <span className="text-xl">{hero.name}</span>
     </div>
   );
 }

@@ -24,7 +24,7 @@ function ClassicGame() {
 
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
-      <div className="fade-in text-white w-11/12 mx-auto flex flex-col lg:mt-56 items-center content-center">
+      <div className="fade-in text-white w-11/12 mx-auto flex flex-col lg:mt-16 items-center content-center">
         <Header />
         <div className=" flex flex-col text-center w-1/5">
           <h3 className="text-3xl">{`Guess Today's Hero!`}</h3>

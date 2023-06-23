@@ -7,7 +7,7 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="teste fade-in flex flex-col text-center w-screen h-screen ">
+    <div className="teste fade-in flex  flex-col text-center w-screen h-screen ">
       <Header />
       {/* Div principal que abarca todo o conteúdo da home! */}
       {/* <div className="flex"> */}

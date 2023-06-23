@@ -49,7 +49,7 @@ function QuoteGame() {
     };
 
     return (
-      <div className="fade-in text-white flex flex-col lg:mt-56 items-center content-center">
+      <div className="fade-in text-white flex flex-col lg:mt-16 items-center">
         <Header />
         <div className="border border-r-2 border-red-500 flex flex-col items-center content-center">
           <h1 className="text-2xl">Which hero says</h1>
@@ -105,7 +105,7 @@ function QuoteGame() {
           )}
         </div>
 
-        <div>
+        <div className="w-5/12 ">
           {quoteTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
 

@@ -116,7 +116,7 @@ export default function HeroesInput({ heroes, type }) {
 
       {renderList && (
         <div className="flex w-1/2 ">
-          <div className="absolute ml-2 w-2/12 max-h-72 scrollbar scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
+          <div className="z-50 absolute ml-2 w-2/12 max-h-72 scrollbar scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
               .filter((val) => {
                 if (value == "") {
@@ -131,7 +131,7 @@ export default function HeroesInput({ heroes, type }) {
                 return (
                   <div
                     onClick={onClick1}
-                    className="dropdown-row flex row gap-2 rounded p-2 bg-gray-700 transition ease-in-out delay-[40ms] hover:bg-gray-500"
+                    className="dropdown-row z-50 flex row gap-2 rounded p-2 bg-gray-700 transition ease-in-out delay-[40ms] hover:bg-gray-500"
                     key={val.name}
                   >
                     <img

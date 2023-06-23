@@ -50,9 +50,9 @@ function SkillGame() {
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div className="fade-in text-white flex flex-col lg:mt-56 items-center content-center">
+      <div className="fade-in text-white flex flex-col  lg:mt-16 items-center w-screen">
         <Header />
-        <div>
+        <div className="border">
           <div>
             <h2 className="text-white">which hero is this skill from</h2>
             <img
@@ -88,7 +88,7 @@ function SkillGame() {
         <div className="text-white">
           <p>{`${skillStatus.count} people already found out`}</p>
         </div>
-        <div>
+        <div className="w-5/12 ">
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
 
