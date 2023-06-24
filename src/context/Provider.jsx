@@ -16,8 +16,8 @@ export const DotaProvider = (props) => {
 
   //requisição inicial para pegar herois
   const fetchData = async () => {
-    // const response = await fetch("https://scary-foal-robe.cyclic.app/status");
-    // const data = await response.json();
+    const response = await fetch("https://scary-foal-robe.cyclic.app/status");
+    const data = await response.json();
     setHeroes(data.heroes);
     setQuoteStatus(data.quote);
     setClassicStatus(data.classic);
