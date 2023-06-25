@@ -6,8 +6,6 @@ import TryCard from "../components/TryCard";
 import Header from "../components/Header";
 import staff from "../assets/staff.png";
 
-import { GiCrescentStaff } from "react-icons/gi";
-
 function SkillGame() {
   const { heroes, skillTries, skillStatus } = useProvider();
   const [skillHeroes, setSkillHeroes] = useState();
@@ -52,29 +50,43 @@ function SkillGame() {
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-screen">
+      <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
         <Header />
-        <div className=" w-1/5 bg-gray-900 flex flex-col items-center rounded">
+        <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
             <h2 className="text-white text-2xl mt-3">
               Which hero is this skill from?
             </h2>
             <img
-              className={`grayscale ${rotation} border-2 border-black rounded-md w-4/12 select-none pointer-events-none mx-auto my-10`}
+              className={`grayscale ${rotation} border-2 border-white rounded-md w-4/12 select-none pointer-events-none mx-auto my-5`}
               src={skillStatus.skillimg}
             />
           </div>
-          <div className="flex flex-col items-center justify-around">
-            <button
-              disabled={skillClue < 5}
-              className="text-white bg-gray-700 w-3/12 mx-auto border border-slate-800 rounded-xl "
-              onClick={hiddenSkillName}
-            >
-              <img src={staff} alt="skill" />
-            </button>
-            {renderInput && skillClue < 5 && skillClue >= 1 && (
-              <div>
-                <h3>Skill Name in {5 - skillClue} tries</h3>
+          <div>
+            {skillClue >= 1 && (
+              <div className="flex flex-col fade-in items-center">
+                <button
+                  disabled={skillClue < 5}
+                  className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
+                  ${
+                    skillClue < 5
+                      ? "bg-gray-700 hover:bg-slate-500"
+                      : "bg-cyan-800 hover:bg-cyan-600"
+                  } transition duration-400`}
+                  onClick={hiddenSkillName}
+                >
+                  <img src={staff} alt="skill" />
+                </button>
+                {skillClue < 5 ? (
+                  <h3 className="text-base fade-in">
+                    Skill Name in {5 - skillClue} tries
+                  </h3>
+                ) : (
+                  <p className="fade-in text-sm">Name Clue</p>
+                )}
+                <p className={`fade-in mt-5 ${skillNameHidden}`}>
+                  {skillStatus.skillname}
+                </p>
               </div>
             )}
           </div>

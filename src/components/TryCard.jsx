@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function TryCard({ correctHero, hero }) {
   return (
     <div
-      className={`flex flex-col mx-auto items-center max-h-28 rounded-xl border-zinc-50 pt-2 w-1/2  mt-2 ${
+      className={`flex flex-col mx-auto items-center max-h-28 rounded-xl border-zinc-50 pt-2 w-5/12  mt-2 ${
         correctHero ? "bg-green-600 hover:bg-green-500/90 correct-answer border-2" : "bg-red-600 hover:bg-red-500/90 border wrong-answer"
       }`}
     >

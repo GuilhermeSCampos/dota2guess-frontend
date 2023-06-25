@@ -75,9 +75,9 @@ export default function HeroesInput({ heroes, type }) {
 
   return (
     <div
-      className="flex flex-col mt-12 pt-2"
+      className="flex flex-col pt-2"
     >
-      <div className="flex flex-row">
+      <div className="flex flex-row ">
         <input
           type="text"
           id="default-input"
@@ -102,7 +102,7 @@ export default function HeroesInput({ heroes, type }) {
           }
           onClick={() => submitChampion(value)}
           type="button"
-          className="z-50 text-white bg-gray-700 w-2/12 hover:bg-gray-400 hover:transition duration-300 delay-0 focus:ring-4 focus:outline-none
+          className="z-50 text-white bg-gray-700 w-2/12 hover:bg-gray-500 hover:transition duration-300 delay-0 focus:ring-4 focus:outline-none
            focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex 
            items-center mr-2"
         >

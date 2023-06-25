@@ -6,18 +6,20 @@ body {
   background-image: url("assets/jugger.jpg");
   background-repeat: no-repeat;
   background-size: fit-content;
+  background-attachment: fixed;
+  background-position: center;
   background-color: rgba(0, 0, 0, 0); /* Valor de opacidade: 0.5 */
   font-family: "Nunito", sans-serif;
 }
 
 .icon {
-  /* Estilos normais do ícone */
-  color: rgb(184, 177, 177); /* Define a cor padrão do ícone */
+  color: rgb(115, 115, 117);
+  
   transition: 0.3s ease-in-out;
 }
 
 .icon:hover {
-  color: rgb(115, 115, 117); /* Define a cor do ícone quando estiver em hover */
+  color: rgb(152, 149, 149); 
 }
 
 .title {
