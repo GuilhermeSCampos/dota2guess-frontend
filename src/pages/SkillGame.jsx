@@ -6,6 +6,7 @@ import TryCard from "../components/TryCard";
 import Header from "../components/Header";
 import staff from "../assets/staff.png";
 import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
+import Confetti from "../components/Confetti";
 
 function SkillGame() {
   const { heroes, skillTries, skillStatus } = useProvider();
@@ -16,6 +17,7 @@ function SkillGame() {
   const [skillClue, setSkillClue] = useState(0);
   const [skillNameHidden, setSkillNameHidden] = useState("hidden");
   const [btnDisabled, setBtnDisabled] = useState(true);
+  const [confetti, setConfetti] = useState(false)
 
   useEffect(() => {
     if (skillStatus) {
@@ -46,6 +48,7 @@ function SkillGame() {
       setSkillHeroes(filteredHeroes);
       setSkillClue(skillTries.length);
       if (skillTries.includes(skillStatus.todayhero)) {
+        setConfetti(true)
         setBtnDisabled(false)
         setIsCorrect(true)
         setRenderInput(false);
@@ -62,6 +65,7 @@ function SkillGame() {
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
       <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
+        {confetti && <Confetti />}
         <ClearLocalStorageBtn />
         <Header />
         <div className=" w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">

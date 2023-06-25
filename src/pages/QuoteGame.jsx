@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import AudioPlayer from "../components/AudioPlayer";
 import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
 import { AiFillSound } from "react-icons/ai";
+import Confetti from "../components/Confetti";
 
 function QuoteGame() {
   const { heroes, quoteTries, quoteStatus } = useProvider();
@@ -14,6 +15,9 @@ function QuoteGame() {
   const [audioClue, setAudioClue] = useState(0);
   const [renderInput, setRenderInput] = useState(true);
   const [toggleAudioBox, setToggleAudioBox] = useState(false);
+  const [confetti, setConfetti] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
     if (quoteTries && heroes) {
@@ -28,6 +32,9 @@ function QuoteGame() {
       quoteStatus &&
       quoteTries.includes(quoteStatus.todayhero)
     ) {
+      setBtnDisabled(false);
+      setIsCorrect(true);
+      setConfetti(true);
       setRenderInput(false);
     }
     if (quoteTries) {
@@ -38,6 +45,12 @@ function QuoteGame() {
   const handleAudioBox = () => {
     setToggleAudioBox(!toggleAudioBox);
   };
+
+  useEffect(() => {
+    if(audioClue && audioClue >= 5) {
+      setBtnDisabled(false)
+    }
+  }, [audioClue])
 
   if (heroes && quoteHeroes && quoteTries && quoteStatus) {
     // const playSound = () => {
@@ -63,6 +76,7 @@ function QuoteGame() {
     return (
       <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
         <ClearLocalStorageBtn />
+        {confetti && <Confetti />}
         <Header />
         <div className="w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <h1 className="text-xl mt-3">Which hero says</h1>
@@ -74,22 +88,24 @@ function QuoteGame() {
           <div className="flex flex-col items-center">
             {audioClue > 0 && (
               <button
-                disabled={audioClue < 6}
+                disabled={btnDisabled}
                 onClick={handleAudioBox}
                 className={`border rounded-full p-1 mt-5 fade-in transition duration-300 text-white  ${
-                  audioClue < 6 ? "hover:bg-red-700" : " mb-3 audio-btn hover:bg-gray-700/80"
+                  audioClue < 6 && !isCorrect
+                    ? "hover:bg-red-700"
+                    : " mb-3 audio-btn hover:bg-gray-700/80"
                 }`}
               >
                 <AiFillSound size={32} className="audio-icon" />
               </button>
             )}
 
-            {audioClue < 6 && audioClue > 0 ? (
+            {audioClue < 6 && audioClue > 0 && !isCorrect ? (
               <div className="mb-2 mt-3 fade-in">
                 <p>Audio Clue in {6 - audioClue} tries</p>
               </div>
             ) : (
-              audioClue >= 6 && (
+              (audioClue >= 6 || isCorrect) && (
                 <div className=" fade-in">
                   <p>Audio Clue</p>
                 </div>

@@ -311,5 +311,25 @@ input[type="range"]::-moz-range-thumb {
   animation: rotate-icon-audio 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
+.confetti {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  border-radius: 50%;
+  animation: confetti-fall 3s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
 
 
