@@ -86,7 +86,7 @@ export default function TransitionsModal() {
               <p>
                 Background URL:{" "}
                 <a
-                  href="https://dmarket.com/blog/best-dota2-wallpapers"
+                  href="https://dmarket.com/blog/best-dota2-wallpapers/jager1_hu1b4a36ef01c87d5ebc4581a2b5b7191b_364471_1920x1080_resize_q100_lanczos.jpg"
                   target="blank"
                   className="text-cyan-600"
                 >

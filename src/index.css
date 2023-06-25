@@ -14,12 +14,12 @@ body {
 
 .icon {
   color: rgb(115, 115, 117);
-  
+
   transition: 0.3s ease-in-out;
 }
 
 .icon:hover {
-  color: rgb(152, 149, 149); 
+  color: rgb(152, 149, 149);
 }
 
 .title {
@@ -230,6 +230,86 @@ input:focus {
   }
   100% {
     transform: rotate(0deg);
-    
   }
 }
+
+@keyframes rotate-icon-audio {
+  0% {
+    transform: rotate(25deg);
+  }
+  25% {
+    transform: rotate(-25deg);
+  }
+  75% {
+    transform: rotate(25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 80%;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #040a0c;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -9px; /* Centers thumb on the track */
+  background-color: #808080;
+  border-radius: 1rem;
+  height: 1.5rem;
+  width: 1rem;
+}
+
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #163a46;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: #808080;
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 1rem;
+  height: 2rem;
+  width: 1rem;
+}
+
+.audio-player-btn {
+  color: rgb(0, 131, 143);
+}
+
+.audio-player-btn:hover {
+  color: rgb(0, 172, 193);
+}
+
+.audio-btn {
+  animation: rotate-icon-audio 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+
+

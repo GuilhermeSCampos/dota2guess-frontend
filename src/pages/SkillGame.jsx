@@ -5,14 +5,17 @@ import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
 import Header from "../components/Header";
 import staff from "../assets/staff.png";
+import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
 
 function SkillGame() {
   const { heroes, skillTries, skillStatus } = useProvider();
   const [skillHeroes, setSkillHeroes] = useState();
   const [rotation, setRotation] = useState("");
+  const [isCorrect, setIsCorrect] = useState(false)
   const [renderInput, setRenderInput] = useState(true);
   const [skillClue, setSkillClue] = useState(0);
   const [skillNameHidden, setSkillNameHidden] = useState("hidden");
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
     if (skillStatus) {
@@ -43,16 +46,25 @@ function SkillGame() {
       setSkillHeroes(filteredHeroes);
       setSkillClue(skillTries.length);
       if (skillTries.includes(skillStatus.todayhero)) {
+        setBtnDisabled(false)
+        setIsCorrect(true)
         setRenderInput(false);
       }
     }
   }, [skillTries, heroes]);
 
+  useEffect(() => {
+    if(skillClue && skillClue >= 5) {
+      setBtnDisabled(false)
+    }
+  }, [skillClue])
+
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
       <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
+        <ClearLocalStorageBtn />
         <Header />
-        <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className=" w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
             <h2 className="text-white text-2xl mt-3">
               Which hero is this skill from?
@@ -66,18 +78,18 @@ function SkillGame() {
             {skillClue >= 1 && (
               <div className="flex flex-col fade-in items-center">
                 <button
-                  disabled={skillClue < 5}
+                  disabled={btnDisabled}
                   className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
                   ${
                     skillClue < 5
                       ? "bg-gray-700 hover:bg-slate-500"
-                      : "bg-cyan-800 hover:bg-cyan-600"
+                      : "bg-cyan-800 hover:bg-cyan-700 audio-btn"
                   } transition duration-400`}
                   onClick={hiddenSkillName}
                 >
                   <img src={staff} alt="skill" />
                 </button>
-                {skillClue < 5 ? (
+                {skillClue < 5 && !isCorrect ? (
                   <h3 className="text-base fade-in">
                     Skill Name in {5 - skillClue} tries
                   </h3>
@@ -91,12 +103,18 @@ function SkillGame() {
             )}
           </div>
           {renderInput && (
-            <HeroesInput heroes={skillHeroes} guessed={false} type="skill" />
+            <div className="mt-4">
+              <HeroesInput
+                heroes={skillHeroes}
+                guessed={false}
+                type="skill"
+                className=""
+              />
+            </div>
           )}
+          <p className="mt-5">{`${skillStatus.count} people already found out`}</p>
         </div>
-        <div className="text-white">
-          <p>{`${skillStatus.count} people already found out`}</p>
-        </div>
+
         <div className="w-5/12 ">
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
@@ -112,12 +130,9 @@ function SkillGame() {
     );
   }
   return (
-    <ReactLoading
-      type={"spinningBubbles"}
-      color={"white"}
-      height={100}
-      width={100}
-    />
+    <div className="flex flex-col items-center w-screen h-screen justify-center">
+      <ReactLoading type={"spinningBubbles"} color={"white"} width={150} />
+    </div>
   );
 }
 

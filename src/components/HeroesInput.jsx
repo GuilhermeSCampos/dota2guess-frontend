@@ -83,6 +83,7 @@ export default function HeroesInput({ heroes, type }) {
           id="default-input"
           value={value}
           onChange={onChange}
+          placeholder="Type a hero name"
           onFocus={({ target }) =>
             heroes.some((e) =>
               e.name.toLowerCase().startsWith(target.value.toLowerCase())

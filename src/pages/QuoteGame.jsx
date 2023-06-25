@@ -4,17 +4,16 @@ import { useProvider } from "../context/Provider";
 import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
 import Header from "../components/Header";
+import AudioPlayer from "../components/AudioPlayer";
+import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
+import { AiFillSound } from "react-icons/ai";
 
 function QuoteGame() {
   const { heroes, quoteTries, quoteStatus } = useProvider();
   const [quoteHeroes, setQuoteHeroes] = useState();
   const [audioClue, setAudioClue] = useState(0);
   const [renderInput, setRenderInput] = useState(true);
-  const [volume, setVolume] = useState(0.5);
-
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
-  };
+  const [toggleAudioBox, setToggleAudioBox] = useState(false);
 
   useEffect(() => {
     if (quoteTries && heroes) {
@@ -36,73 +35,88 @@ function QuoteGame() {
     }
   }, [quoteTries, quoteStatus]);
 
+  const handleAudioBox = () => {
+    setToggleAudioBox(!toggleAudioBox);
+  };
+
   if (heroes && quoteHeroes && quoteTries && quoteStatus) {
-    const playSound = () => {
-      const audio = new Audio(
+    // const playSound = () => {
+    //   const audio = new Audio(
+    //     quoteStatus.audiolink.substring(
+    //       0,
+    //       quoteStatus.audiolink.indexOf(".mp3") + 4
+    //     )
+    //   );
+    //   audio.volume = volume;
+    //   audio.play();
+    // };
+
+    if (quoteStatus) {
+      console.log(
         quoteStatus.audiolink.substring(
           0,
           quoteStatus.audiolink.indexOf(".mp3") + 4
         )
       );
-      audio.volume = volume;
-      audio.play();
-    };
+    }
 
     return (
-      <div className="fade-in text-white flex flex-col lg:mt-16 items-center">
+      <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
+        <ClearLocalStorageBtn />
         <Header />
-        <div className="border border-r-2 border-red-500 flex flex-col items-center content-center">
-          <h1 className="text-2xl">Which hero says</h1>
+        <div className="w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">
+          <h1 className="text-xl mt-3">Which hero says</h1>
 
-          <p className="text-4xl w-8/12 text-white pt-4 pb-4">
+          <p className="text-3xl w-11/12 text-white mx-auto mt-6 text-center">
             ❝{quoteStatus.quote}❞
           </p>
 
-          <div>
-            <div>
-              {renderInput && audioClue >= 5 && (
-                <div>
-                  <img
-                    className="h-12"
-                    src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
-                    onClick={() => playSound()}
-                  />
+          <div className="flex flex-col items-center">
+            {audioClue > 0 && (
+              <button
+                disabled={audioClue < 6}
+                onClick={handleAudioBox}
+                className={`border rounded-full p-1 mt-5 fade-in transition duration-300 text-white  ${
+                  audioClue < 6 ? "hover:bg-red-700" : " mb-3 audio-btn hover:bg-gray-700/80"
+                }`}
+              >
+                <AiFillSound size={32} className="audio-icon" />
+              </button>
+            )}
+
+            {audioClue < 6 && audioClue > 0 ? (
+              <div className="mb-2 mt-3 fade-in">
+                <p>Audio Clue in {6 - audioClue} tries</p>
+              </div>
+            ) : (
+              audioClue >= 6 && (
+                <div className=" fade-in">
                   <p>Audio Clue</p>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.1"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                  />
                 </div>
-              )}
-              {renderInput && audioClue < 5 && (
-                <div>
-                  <img
-                    className="h-12 grayscale"
-                    src="https://cdn-icons-png.flaticon.com/512/2468/2468825.png"
-                  />
-                  <p>Audio Clue in {5 - audioClue} tries</p>
-                </div>
-              )}
-            </div>
+              )
+            )}
+            {toggleAudioBox && (
+              <div className="mt-4">
+                <AudioPlayer
+                  audioSource={quoteStatus.audiolink.substring(
+                    0,
+                    quoteStatus.audiolink.indexOf(".mp3") + 4
+                  )}
+                />
+              </div>
+            )}
+
+            {renderInput && (
+              <div className="mt-6">
+                <HeroesInput
+                  heroes={quoteHeroes}
+                  type={"quote"}
+                  guessed={quoteTries.includes(quoteStatus.todayhero)}
+                />
+              </div>
+            )}
           </div>
-        </div>
-        {renderInput && (
-          <HeroesInput
-            heroes={quoteHeroes}
-            type={"quote"}
-            guessed={quoteTries.includes(quoteStatus.todayhero)}
-          />
-        )}
-        <div>
-          {quoteStatus ? (
-            <p>{`${quoteStatus.count} people already found out`}</p>
-          ) : (
-            <p>carregando</p>
-          )}
+          <p className="mt-5">{`${quoteStatus.count} people already found out`}</p>
         </div>
 
         <div className="w-5/12 ">
@@ -116,18 +130,14 @@ function QuoteGame() {
               return <TryCard key={heroName} hero={hero} correctHero={false} />;
           })}
         </div>
-        <div>{!renderInput && <p>Acertou!</p>}</div>
       </div>
     );
   }
 
   return (
-    <ReactLoading
-      type={"spinningBubbles"}
-      color={"white"}
-      height={100}
-      width={100}
-    />
+    <div className="flex flex-col items-center w-screen h-screen justify-center">
+      <ReactLoading type={"spinningBubbles"} color={"white"} width={150} />
+    </div>
   );
 }
 

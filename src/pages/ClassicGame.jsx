@@ -72,6 +72,16 @@ function ClassicGame() {
       </div>
     );
   }
+
+  return (
+    <div className="flex flex-col items-center w-screen h-screen justify-center">
+    <ReactLoading
+      type={"spinningBubbles"}
+      color={"white"}
+      width={150}
+    />
+    </div>
+  );
 }
 
 export default ClassicGame;
