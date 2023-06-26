@@ -8,8 +8,15 @@ body {
   background-size: fit-content;
   background-attachment: fixed;
   background-position: center;
-  background-color: rgba(0, 0, 0, 0); /* Valor de opacidade: 0.5 */
+  background-color: rgba(0, 0, 0, 0.5); /* Valor de opacidade: 0.5 */
   font-family: "Nunito", sans-serif;
+}
+
+.background-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Define a cor de fundo com opacidade */
+  overflow-x: hidden;
 }
 
 .icon {
@@ -37,6 +44,10 @@ body {
 
 .fade-in {
   animation: fadeIn 1s;
+}
+
+.fade-in-2 {
+  animation: fadeIn 2s;
 }
 
 /* Transition to a bigger shadow on hover */
@@ -129,13 +140,15 @@ input:focus {
   background: currentColor;
 }
 
+/* SCROLLBAR*/
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #c66767;
+  background: #ffffffaf;
 }
 
 /* Handle */
@@ -330,6 +343,78 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
+.image-crop {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
 
+.image-crop img {
+  margin: -50px -50px; /* ajuste os valores negativos para definir a posição da área que você deseja mostrar */
+}
+
+.card-delay-1 {
+  transform: rotateX(-90deg);
+  animation: aparecer 1s ease-out forwards;
+}
+
+.card-delay-2 {
+  transform: rotateX(-90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.card-delay-3 {
+  transform: rotateX(-90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+.card-delay-4 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 1.5s;
+}
+
+.card-delay-5 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 2s;
+}
+
+.card-delay-6 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+.card-delay-7 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 3s;
+}
+
+.card-delay-8 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 3.5s;
+}
+
+.card-delay-9 {
+  transform: rotateX(90deg);
+  animation: aparecer 1s ease-out forwards;
+  animation-delay: 5s;
+}
+
+@keyframes aparecer {
+  0% {
+    transform: rotateX(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(-0deg);
+    opacity: 1;
+  }
+}
 
 

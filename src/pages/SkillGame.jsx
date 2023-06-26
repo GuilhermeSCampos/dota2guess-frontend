@@ -68,7 +68,7 @@ function SkillGame() {
         {confetti && <Confetti />}
         <ClearLocalStorageBtn />
         <Header />
-        <div className=" w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
             <h2 className="text-white text-2xl mt-3">
               Which hero is this skill from?
@@ -85,7 +85,7 @@ function SkillGame() {
                   disabled={btnDisabled}
                   className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
                   ${
-                    skillClue < 5
+                    btnDisabled
                       ? "bg-gray-700 hover:bg-slate-500"
                       : "bg-cyan-800 hover:bg-cyan-700 audio-btn"
                   } transition duration-400`}
@@ -116,9 +116,9 @@ function SkillGame() {
               />
             </div>
           )}
-          <p className="mt-5">{`${skillStatus.count} people already found out`}</p>
-        </div>
 
+        </div>
+        <p className="mt-2">{`${skillStatus.count} people already found out`}</p>
         <div className="w-5/12 ">
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);

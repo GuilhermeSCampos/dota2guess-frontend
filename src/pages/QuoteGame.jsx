@@ -78,7 +78,7 @@ function QuoteGame() {
         <ClearLocalStorageBtn />
         {confetti && <Confetti />}
         <Header />
-        <div className="w-1/5 mt-5 bg-gray-800 pb-1 flex border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className="w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <h1 className="text-xl mt-3">Which hero says</h1>
 
           <p className="text-3xl w-11/12 text-white mx-auto mt-6 text-center">
@@ -132,9 +132,9 @@ function QuoteGame() {
               </div>
             )}
           </div>
-          <p className="mt-5">{`${quoteStatus.count} people already found out`}</p>
-        </div>
 
+        </div>
+        <p className="mt-2">{`${quoteStatus.count} people already found out`}</p>
         <div className="w-5/12 ">
           {quoteTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);

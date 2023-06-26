@@ -1,25 +1,29 @@
-// 20230523075139
-// https://scary-foal-robe.cyclic.app/status
+// 20230626142517
+// https://dota2guess-backend.vercel.app/status
 
 export const data = {
   "classic": {
     "count": 0,
-    "todayhero": "Timbersaw",
-    "lasthero": "Anti-Mage"
+    "todayhero": "Oracle",
+    "lasthero": "Gyrocopter",
+    "skillimg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/oracle_fortunes_end.png",
+    "quote": "Like those odds, do you, hmm?",
+    "audioLink": "https://static.wikia.nocookie.net/dota2_gamepedia/images/e/e3/Vo_oracle_orac_move_18.mp3/revision/latest?cb=20201018115750",
+    "skillName": "FORTUNE'S END"
   },
   "quote": {
     "count": 1,
-    "todayhero": "Viper",
-    "lasthero": "Bane",
-    "quote": "I fly into a rage.",
-    "audiolink": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/92/Vo_viper_vipe_move_14.mp3/revision/latest?cb=20201022213044"
+    "todayhero": "Shadow Shaman",
+    "lasthero": "Dark Seer",
+    "quote": "For our fathers, gone beyond the hills!",
+    "audiolink": "https://static.wikia.nocookie.net/dota2_gamepedia/images/9/97/Vo_shadowshaman_shad_win_03.mp3/revision/latest?cb=20201018181944"
   },
   "skill": {
-    "count": 0,
-    "todayhero": "Clinkz",
-    "lasthero": "Wraith King",
-    "skillimg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/clinkz_death_pact.png",
-    "skillname": "DEATH PACT",
+    "count": 1,
+    "todayhero": "Meepo",
+    "lasthero": "Lion",
+    "skillimg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/meepo_earthbind.png",
+    "skillname": "EARTHBIND",
     "rotation": 3
   },
   "heroes": [
@@ -264,7 +268,7 @@ export const data = {
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/batrider.png",
       "baseHp": "736",
       "baseMp": "339",
-      "baseAttack": "4294967337-45",
+      "baseAttack": "41-45",
       "baseDefense": "4.5",
       "moveSpeed": "330",
       "skills": [
@@ -361,11 +365,11 @@ export const data = {
       "name": "Bounty Hunter",
       "primaryAttr": "Agility",
       "attackType": "Melee",
-      "strength": "20",
+      "strength": "19",
       "agility": "21",
       "intelligence": "22",
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/bounty_hunter.png",
-      "baseHp": "560",
+      "baseHp": "538",
       "baseMp": "339",
       "baseAttack": "54-62",
       "baseDefense": "8.5",
@@ -866,7 +870,7 @@ export const data = {
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/disruptor.png",
       "baseHp": "582",
       "baseMp": "315",
-      "baseAttack": "49-53",
+      "baseAttack": "47-51",
       "baseDefense": "2.5",
       "moveSpeed": "295",
       "skills": [
@@ -900,7 +904,7 @@ export const data = {
       "baseHp": "648",
       "baseMp": "255",
       "baseAttack": "58-68",
-      "baseDefense": "5.5",
+      "baseDefense": "4.5",
       "moveSpeed": "285",
       "skills": [
         {
@@ -1607,7 +1611,7 @@ export const data = {
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/legion_commander.png",
       "baseHp": "670",
       "baseMp": "315",
-      "baseAttack": "60-64",
+      "baseAttack": "58-62",
       "baseDefense": "3.0",
       "moveSpeed": "330",
       "skills": [
@@ -1675,7 +1679,7 @@ export const data = {
       "baseMp": "363",
       "baseAttack": "48-57",
       "baseDefense": "1.8",
-      "moveSpeed": "295",
+      "moveSpeed": "290",
       "skills": [
         {
           "skillImg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/lich_frost_nova.png",
@@ -1899,13 +1903,13 @@ export const data = {
       "primaryAttr": "Universal",
       "attackType": "Melee",
       "strength": "25",
-      "agility": "15",
+      "agility": "9",
       "intelligence": "19",
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/magnataur.png",
       "baseHp": "670",
       "baseMp": "303",
-      "baseAttack": "50-58",
-      "baseDefense": "3.5",
+      "baseAttack": "46-54",
+      "baseDefense": "2.5",
       "moveSpeed": "305",
       "skills": [
         {
@@ -2069,7 +2073,7 @@ export const data = {
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/mirana.png",
       "baseHp": "560",
       "baseMp": "339",
-      "baseAttack": "4294967337-4294967341",
+      "baseAttack": "41-45",
       "baseDefense": "2.0",
       "moveSpeed": "290",
       "skills": [
@@ -2512,7 +2516,7 @@ export const data = {
       "baseMp": "267",
       "baseAttack": "45-51",
       "baseDefense": "5.0",
-      "moveSpeed": "300",
+      "moveSpeed": "295",
       "skills": [
         {
           "skillImg": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/pangolier_swashbuckle.png",
@@ -2802,13 +2806,13 @@ export const data = {
       "primaryAttr": "Agility",
       "attackType": "Ranged",
       "strength": "22",
-      "agility": "22",
+      "agility": "24",
       "intelligence": "21",
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/razor.png",
       "baseHp": "604",
       "baseMp": "327",
-      "baseAttack": "45-47",
-      "baseDefense": "3.7",
+      "baseAttack": "47-49",
+      "baseDefense": "4.0",
       "moveSpeed": "280",
       "skills": [
         {
@@ -3270,7 +3274,7 @@ export const data = {
       "baseHp": "736",
       "baseMp": "243",
       "baseAttack": "59-69",
-      "baseDefense": "4.8",
+      "baseDefense": "3.8",
       "moveSpeed": "295",
       "skills": [
         {
@@ -3854,7 +3858,7 @@ export const data = {
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/venomancer.png",
       "baseHp": "538",
       "baseMp": "303",
-      "baseAttack": "4294967338-45",
+      "baseAttack": "42-45",
       "baseDefense": "4.0",
       "moveSpeed": "280",
       "skills": [
@@ -3947,13 +3951,13 @@ export const data = {
       "name": "Void Spirit",
       "primaryAttr": "Universal",
       "attackType": "Melee",
-      "strength": "22",
+      "strength": "21",
       "agility": "19",
       "intelligence": "24",
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/void_spirit.png",
-      "baseHp": "604",
+      "baseHp": "582",
       "baseMp": "363",
-      "baseAttack": "49-53",
+      "baseAttack": "48-52",
       "baseDefense": "2.2",
       "moveSpeed": "290",
       "skills": [
@@ -4079,13 +4083,13 @@ export const data = {
       "name": "Winter Wyvern",
       "primaryAttr": "Universal",
       "attackType": "Ranged",
-      "strength": "22",
+      "strength": "20",
       "agility": "16",
       "intelligence": "26",
       "img": "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/winter_wyvern.png",
-      "baseHp": "604",
+      "baseHp": "560",
       "baseMp": "387",
-      "baseAttack": "42-47",
+      "baseAttack": "39-44",
       "baseDefense": "2.7",
       "moveSpeed": "285",
       "skills": [
