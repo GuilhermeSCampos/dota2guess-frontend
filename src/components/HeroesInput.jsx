@@ -37,9 +37,12 @@ export default function HeroesInput({ heroes, type }) {
     }
   };
 
-  const onClick1 = (event) => {
-    setValue(event.target.innerText);
-    console.log(event.target.value);
+  const onClick1 = ({target}) => {
+    if (target.localName === "img") {
+      setValue(target.name)
+    } else {
+      setValue(target.innerText);
+    }
     setRenderList(false);
   };
 
@@ -74,9 +77,7 @@ export default function HeroesInput({ heroes, type }) {
   };
 
   return (
-    <div
-      className="flex flex-col pt-2"
-    >
+    <div className="flex flex-col pt-2">
       <div className="flex flex-row ">
         <input
           type="text"
@@ -134,13 +135,16 @@ export default function HeroesInput({ heroes, type }) {
                     onClick={onClick1}
                     className="dropdown-row z-50 flex row gap-2 rounded p-2 bg-gray-700 transition ease-in-out delay-[40ms] hover:bg-gray-500"
                     key={val.name}
+                    name={val.name}
                   >
                     <img
                       className="w-14 border-solid border-2 border-black"
                       src={val.img}
                       alt={val.name}
+  
+                      name={val.name}
                     />
-                    <p className="text-neutral-50 pt-1">{val.name}</p>
+                    <p name={val.name} className="text-neutral-50 pt-1">{val.name}</p>
                   </div>
                 );
               })}
