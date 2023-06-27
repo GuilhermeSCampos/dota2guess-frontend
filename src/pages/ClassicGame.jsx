@@ -15,7 +15,7 @@ function ClassicGame() {
   const [renderInput, setRenderInput] = useState(true);
   const [confetti, setConfetti] = useState(false);
   const [skillBoxHidden, setSkillBoxHidden] = useState("hidden");
-  const [skillBtnDisabled, SetskillBtnDisabled] = useState(true);
+  const [skillBtnDisabled, setskillBtnDisabled] = useState(true);
   const [classicClue, setClassicClue] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
 
@@ -27,13 +27,19 @@ function ClassicGame() {
       setClassicClue(classicTries.length);
       if (classicTries.includes(classicStatus.todayhero)) {
         setIsCorrect(true);
-        SetskillBtnDisabled(false);
+        setskillBtnDisabled(false);
         setRenderInput(false);
         setConfetti(true);
       }
       setClassicHeroes(filteredHeroes);
     }
   }, [classicTries, heroes]);
+
+  useEffect(() => {
+    if (classicClue && classicClue >= 7) {
+      setskillBtnDisabled(false);
+    }
+  }, [classicClue]);
 
   const handleSkillBox = () => {
     if (skillBoxHidden === "hidden") {
@@ -51,12 +57,12 @@ function ClassicGame() {
         <Header />
         <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">
           <h3 className="text-3xl my-3">{`Guess Today's Hero!`}</h3>
-          <div>
+          <div className="border w-full">
             {classicClue >= 1 && (
-              <div className="flex flex-col fade-in items-center">
+              <div className="flex flex-col fade-in items-center border">
                 <button
                   disabled={skillBtnDisabled}
-                  className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
+                  className={`text-white  w-2/12 mx-auto border p-2 border-slate-500 rounded-full 
                   ${
                     skillBtnDisabled
                       ? "bg-gray-700 hover:bg-slate-500"
@@ -92,7 +98,7 @@ function ClassicGame() {
 
         <div className="w-screen mt-10 fade-in-2">
           {classicTries.length > 0 && (
-            <div className="flex items-center justify-center w-7/12 mx-auto my-2">
+            <div className="flex items-center justify-center w-7/12 text-sm mx-auto my-2">
               <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
                 Hero{" "}
               </div>

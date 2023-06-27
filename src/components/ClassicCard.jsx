@@ -36,39 +36,39 @@ function ClassicCard({ correctHero, selectedHero }) {
 
   const compareAttr = (correctAttr, selectedAttr) => {
     if (correctAttr > selectedAttr) {
-      return <MoveUp strokeWidth={2} size={25} />;
+      return <MoveUp strokeWidth={2} size={20} />;
     }
     if (correctAttr < selectedAttr) {
-      return <MoveDown strokeWidth={2} size={25} />;
+      return <MoveDown strokeWidth={2} size={20} />;
     }
   };
 
   return (
-    <div className="flex items-center justify-center w-7/12 mx-auto my-2">
+    <div className="flex items-center text-xm justify-center w-7/12 mx-auto my-2">
       <img src={img} className={`w-1/12 border mx-1 rounded-xl h-2/12 `} />
       <div
-        className={`w-1/12 border mx-1 items-center justify-center flex py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 items-center justify-center flex py-3 rounded-xl ${
           primaryAttr1 !== primaryAttr2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
         {primaryAttr2}
       </div>
       <div
-        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl ${
           gender1 !== gender2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
         {gender2}
       </div>
       <div
-        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl ${
           attackType1 !== attackType2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
         {attackType2}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
           baseAttack1 !== baseAttack2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
@@ -76,7 +76,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(correctAttackSum), Number(selectedAttackSum))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
           Number(baseDefense1) !== Number(baseDefense2)
             ? "bg-[#e32626a3]"
             : "bg-[#24ad46ce]"
@@ -86,7 +86,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseDefense1), Number(baseDefense2))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
           baseHp1 !== baseHp2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
@@ -94,7 +94,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseHp1), Number(baseHp2))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl text-lg ${
+        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
           baseMp1 !== baseMp2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
@@ -102,7 +102,7 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseMp1), Number(baseMp2))}
       </div>
       <div
-        className={`w-1/12 border-x border-y mx-1 flex justify-center py-3 rounded-xl text-lg ${
+        className={`w-1/12 border-x border-y mx-1 flex justify-center py-3 rounded-xl ${
           moveSpeed1 !== moveSpeed2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
         }`}
       >
