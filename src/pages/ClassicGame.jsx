@@ -15,8 +15,9 @@ function ClassicGame() {
   const [renderInput, setRenderInput] = useState(true);
   const [confetti, setConfetti] = useState(false);
   const [skillBoxHidden, setSkillBoxHidden] = useState("hidden");
-  const [quuoteBoxHidden, setQuoteBoxHidden] = useState("hidden");
+  const [quoteBoxHidden, setQuoteBoxHidden] = useState("hidden");
   const [skillBtnDisabled, setskillBtnDisabled] = useState(true);
+  const [quoteBtnDisabled, setQuoteBtnDisabled] = useState(true);
   const [classicClue, setClassicClue] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
   const [rotation, setRotation] = useState("");
@@ -41,6 +42,7 @@ function ClassicGame() {
       );
       setClassicClue(classicTries.length);
       if (classicTries.includes(classicStatus.todayhero)) {
+        setQuoteBtnDisabled(false);
         setIsCorrect(true);
         setskillBtnDisabled(false);
         setRenderInput(false);
@@ -51,16 +53,29 @@ function ClassicGame() {
   }, [classicTries, heroes]);
 
   useEffect(() => {
-    if (classicClue && classicClue >= 7) {
+    if (classicClue && classicClue >= 13) {
       setskillBtnDisabled(false);
+    }
+    if (classicClue && classicClue >= 7) {
+      setQuoteBtnDisabled(false);
     }
   }, [classicClue]);
 
   const handleSkillBox = () => {
+    setQuoteBoxHidden("hidden");
     if (skillBoxHidden === "hidden") {
       setSkillBoxHidden("");
     } else {
       setSkillBoxHidden("hidden");
+    }
+  };
+
+  const handleAudioBox = () => {
+    setSkillBoxHidden("hidden");
+    if (quoteBoxHidden === "hidden") {
+      setQuoteBoxHidden("");
+    } else {
+      setQuoteBoxHidden("hidden");
     }
   };
 
@@ -72,12 +87,34 @@ function ClassicGame() {
         <Header />
         <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">
           <h3 className="text-3xl my-3">{`Guess Today's Hero!`}</h3>
-          <div className="w-full">
+          <div className="w-full flex items-center justify-start">
             {classicClue >= 1 && (
-              <div className="flex flex-col fade-in items-center ">
+              <div className="flex flex-col fade-in items-center w-1/2">
+                <button
+                  disabled={quoteBtnDisabled}
+                  onClick={handleAudioBox}
+                  className={`border rounded-full p-1 fade-in transition duration-300 text-white  ${
+                    classicClue < 7 && !isCorrect
+                      ? "hover:bg-red-700"
+                      : "audio-btn hover:bg-gray-700/80"
+                  }`}
+                >
+                  <AiFillSound size={30} className="audio-icon" />
+                </button>
+                {classicClue < 7 && !isCorrect ? (
+                  <h3 className="text-xs fade-in">
+                    Quote clue in {7 - classicClue} tries
+                  </h3>
+                ) : (
+                  <p className="fade-in text-xs">Quote Clue</p>
+                )}
+              </div>
+            )}
+            {classicClue >= 1 && (
+              <div className="flex flex-col fade-in items-center w-1/2">
                 <button
                   disabled={skillBtnDisabled}
-                  className={`text-white  w-2/12 mx-auto border p-2 border-slate-500 rounded-full 
+                  className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
                   ${
                     skillBtnDisabled
                       ? "bg-gray-700 hover:bg-slate-500"
@@ -87,20 +124,23 @@ function ClassicGame() {
                 >
                   <img src={staff} alt="skill" />
                 </button>
-                {classicClue < 7 && !isCorrect ? (
-                  <h3 className="text-base fade-in">
-                    Skill Name in {7 - classicClue} tries
+                {classicClue < 13 && !isCorrect ? (
+                  <h3 className="text-xs fade-in">
+                    Skill Clue in {13 - classicClue} tries
                   </h3>
                 ) : (
-                  <p className="fade-in text-sm">Skill Clue</p>
+                  <p className="fade-in text-xs">Skill Clue</p>
                 )}
               </div>
             )}
           </div>
+          <div className={`fade-in w-11/12 text-3xl my-10 ${quoteBoxHidden}`}>
+            <h3>{`❝${classicStatus.quote}❞`}</h3>
+          </div>
           <div className={`fade-in ${skillBoxHidden}`}>
             <img
               src={classicStatus.skillimg}
-              className={` border-white grayscale rounded-md w-9/12 select-none pointer-events-none mx-auto my-5 ${rotation}`}
+              className={`border-white grayscale rounded-md w-9/12 select-none pointer-events-none mx-auto my-5 ${rotation}`}
             />
           </div>
           <div className="">
