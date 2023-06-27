@@ -19,6 +19,20 @@ function ClassicGame() {
   const [skillBtnDisabled, setskillBtnDisabled] = useState(true);
   const [classicClue, setClassicClue] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [rotation, setRotation] = useState("");
+
+  useEffect(() => {
+    const randomRotation = Math.floor(Math.random() * 3) + 1;
+    if (randomRotation === 1) {
+      setRotation("rotate-90");
+    }
+    if (randomRotation === 2) {
+      setRotation("rotate-180");
+    }
+    if (randomRotation === 3) {
+      setRotation("-rotate-90");
+    }
+  }, []);
 
   useEffect(() => {
     if (classicTries && heroes) {
@@ -86,7 +100,7 @@ function ClassicGame() {
           <div className={`fade-in ${skillBoxHidden}`}>
             <img
               src={classicStatus.skillimg}
-              className=" border-white rounded-md w-9/12 select-none pointer-events-none mx-auto my-5"
+              className={` border-white grayscale rounded-md w-9/12 select-none pointer-events-none mx-auto my-5 ${rotation}`}
             />
           </div>
           <div className="">
