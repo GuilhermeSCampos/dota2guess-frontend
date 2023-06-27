@@ -15,6 +15,7 @@ function ClassicGame() {
   const [renderInput, setRenderInput] = useState(true);
   const [confetti, setConfetti] = useState(false);
   const [skillBoxHidden, setSkillBoxHidden] = useState("hidden");
+  const [quuoteBoxHidden, setQuoteBoxHidden] = useState("hidden");
   const [skillBtnDisabled, setskillBtnDisabled] = useState(true);
   const [classicClue, setClassicClue] = useState(0);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -57,9 +58,9 @@ function ClassicGame() {
         <Header />
         <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">
           <h3 className="text-3xl my-3">{`Guess Today's Hero!`}</h3>
-          <div className="border w-full">
+          <div className="w-full">
             {classicClue >= 1 && (
-              <div className="flex flex-col fade-in items-center border">
+              <div className="flex flex-col fade-in items-center ">
                 <button
                   disabled={skillBtnDisabled}
                   className={`text-white  w-2/12 mx-auto border p-2 border-slate-500 rounded-full 
@@ -77,10 +78,16 @@ function ClassicGame() {
                     Skill Name in {7 - classicClue} tries
                   </h3>
                 ) : (
-                  <p className="fade-in text-sm">Name Clue</p>
+                  <p className="fade-in text-sm">Skill Clue</p>
                 )}
               </div>
             )}
+          </div>
+          <div className={`fade-in ${skillBoxHidden}`}>
+            <img
+              src={classicStatus.skillimg}
+              className=" border-white rounded-md w-9/12 select-none pointer-events-none mx-auto my-5"
+            />
           </div>
           <div className="">
             {classicTries.length === 0 && (
