@@ -82,7 +82,7 @@ function ClassicGame() {
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
       <div className="fade-in text-white w-11/12 mx-auto flex flex-col lg:mt-16 items-center content-center">
-        <ClearLocalStorageBtn />
+        {/* <ClearLocalStorageBtn /> */}
         {confetti && <Confetti />}
         <Header />
         <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">

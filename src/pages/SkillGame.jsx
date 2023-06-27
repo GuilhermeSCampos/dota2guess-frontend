@@ -66,7 +66,7 @@ function SkillGame() {
     return (
       <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
         {confetti && <Confetti />}
-        <ClearLocalStorageBtn />
+        {/* <ClearLocalStorageBtn /> */}
         <Header />
         <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
