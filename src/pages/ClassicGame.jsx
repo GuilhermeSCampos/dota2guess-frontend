@@ -12,7 +12,8 @@ import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function ClassicGame() {
   const { t } = useTranslation();
-  const { heroes, classicTries, classicStatus } = useProvider();
+  const { heroes, classicTries, classicStatus, isTransitioning } =
+    useProvider();
   const [classicHeroes, setClassicHeroes] = useState();
   const [renderInput, setRenderInput] = useState(true);
   const [confetti, setConfetti] = useState(false);
@@ -83,7 +84,11 @@ function ClassicGame() {
 
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
-      <div className="fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center">
+      <div
+        className={`fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center ${
+          isTransitioning ? "fade-out-btn" : "fade-in-btn"
+        }`}
+      >
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="classic" />

@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { useTranslation } from "react-i18next";
-import ChangeLanguageBtns from "../components/ChangeLanguageBtns"
+import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
+import { useProvider } from "../context/Provider";
 
 const gameOptions = ["Classic", "Quote", "Skill"];
 
 function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { isTransitioning } = useProvider();
 
   return (
-    <div className="teste fade-in flex  flex-col text-center w-screen h-screen ">
-      <ChangeLanguageBtns />
+    <div
+      className={`teste fade-in flex  flex-col text-center w-screen h-screen ${
+        isTransitioning ? "fade-out-btn" : "fade-in-btn"
+      }`}
+    >
+      <ChangeLanguageBtns type="home" />
       <Header type="home" />
       {/* Div principal que abarca todo o conteúdo da home! */}
       {/* <div className="flex"> */}

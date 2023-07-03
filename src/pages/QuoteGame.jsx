@@ -12,7 +12,7 @@ import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function QuoteGame() {
   const { t } = useTranslation();
-  const { heroes, quoteTries, quoteStatus } = useProvider();
+  const { heroes, quoteTries, quoteStatus, isTransitioning } = useProvider();
   const [quoteHeroes, setQuoteHeroes] = useState();
   const [audioClue, setAudioClue] = useState(0);
   const [renderInput, setRenderInput] = useState(true);
@@ -76,7 +76,9 @@ function QuoteGame() {
     }
 
     return (
-      <div className="fade-in text-white flex flex-col justify-around items-center w-11/12 mx-auto">
+      <div  className={`fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center ${
+        isTransitioning ? "fade-out-btn" : "fade-in-btn"
+      }`}>
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="quote" />

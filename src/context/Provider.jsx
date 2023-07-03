@@ -3,7 +3,7 @@ export const mainContext = React.createContext({});
 import PropTypes from "prop-types";
 import { createLocalStorage } from "../utils/initialLocalStorage.js";
 import { getDate } from "../utils/getDate.js";
-import { data } from "../data/data.js"
+import { data } from "../data/data.js";
 
 export const DotaProvider = (props) => {
   const [heroes, setHeroes] = useState();
@@ -13,6 +13,7 @@ export const DotaProvider = (props) => {
   const [quoteStatus, setQuoteStatus] = useState();
   const [classicStatus, setClassicStatus] = useState();
   const [skillStatus, setSkillStatus] = useState();
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   //requisição inicial para pegar herois
   const fetchData = async () => {
@@ -68,15 +69,15 @@ export const DotaProvider = (props) => {
     const playerData = JSON.parse(localStorage.getItem("dota2guess"));
     playerData.games.skill.unshift(hero);
     localStorage.setItem("dota2guess", JSON.stringify(playerData));
-  } 
+  };
 
   const submitClassicHero = (hero) => {
     const update = [hero, ...classicTries];
-    setClassicTries(update)
+    setClassicTries(update);
     const playerData = JSON.parse(localStorage.getItem("dota2guess"));
     playerData.games.classic.unshift(hero);
     localStorage.setItem("dota2guess", JSON.stringify(playerData));
-  }
+  };
 
   useEffect(() => {
     fetchData();
@@ -100,7 +101,9 @@ export const DotaProvider = (props) => {
         setQuoteStatus,
         submitSkillHero,
         setSkillStatus,
-        submitClassicHero
+        submitClassicHero,
+        isTransitioning,
+        setIsTransitioning,
       }}
     >
       {props.children}

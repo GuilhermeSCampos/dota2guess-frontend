@@ -450,3 +450,13 @@ input[type="range"]::-moz-range-thumb {
     transform: scale(1);
   }
 }
+
+.fade-in-btn {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-out-btn {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}

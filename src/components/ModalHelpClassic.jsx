@@ -119,7 +119,7 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Gender:")} <span className="text-[#43A047]">{t("Green")}</span>
+                    {t("Gender: ")}<span className="text-[#43A047]">{t("Green")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle is Male, so its an exact match!")}

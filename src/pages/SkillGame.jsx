@@ -11,7 +11,7 @@ import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function SkillGame() {
   const { t } = useTranslation();
-  const { heroes, skillTries, skillStatus } = useProvider();
+  const { heroes, skillTries, skillStatus, isTransitioning } = useProvider();
   const [skillHeroes, setSkillHeroes] = useState();
   const [rotation, setRotation] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
@@ -66,7 +66,11 @@ function SkillGame() {
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div className="fade-in text-white flex flex-col justify-around items-center w-11/12 mx-auto">
+      <div
+        className={`fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center ${
+          isTransitioning ? "fade-out-btn" : "fade-in-btn"
+        }`}
+      >
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="skill" />

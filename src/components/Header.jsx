@@ -3,9 +3,11 @@ import ModalInfo from "./ModalInfo";
 import ModalHelpClassic from "./ModalHelpClassic";
 import ModalHelpQuote from "./ModalHelpQuote";
 import ModalHelpSkill from "./ModalHelpSkill";
+import { useTranslation } from "react-i18next";
 
 function Header({ type }) {
   const navigate = useNavigate();
+  const { t } = useTranslation()
   return (
     <div className="text-center flex flex-col mx-auto my-5 justify-center items-center">
       <button
@@ -20,7 +22,7 @@ function Header({ type }) {
             <ModalInfo />
           </button>
           <div className="about border-2 mt-14 rounded-xl my-3 border-cyan-700 bg-gray-700 text-white px-4 py-1">
-            <p>About</p>
+            <p>{t("About")}</p>
           </div>
         </div>
         <div className="flex flex-col items-center">
@@ -36,7 +38,7 @@ function Header({ type }) {
             )}
           </button>
           <div className="about border-2 mt-14 rounded-xl my-3 border-cyan-700 bg-gray-700 text-white px-4 py-1">
-            <p>How to Play</p>
+            <p>{t("How to Play")}</p>
           </div>
         </div>
       </div>
