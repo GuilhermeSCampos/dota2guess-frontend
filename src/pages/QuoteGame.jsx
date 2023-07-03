@@ -5,11 +5,13 @@ import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
 import Header from "../components/Header";
 import AudioPlayer from "../components/AudioPlayer";
-import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
 import { AiFillSound } from "react-icons/ai";
 import Confetti from "../components/Confetti";
+import { useTranslation } from "react-i18next";
+import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function QuoteGame() {
+  const { t } = useTranslation();
   const { heroes, quoteTries, quoteStatus } = useProvider();
   const [quoteHeroes, setQuoteHeroes] = useState();
   const [audioClue, setAudioClue] = useState(0);
@@ -47,10 +49,10 @@ function QuoteGame() {
   };
 
   useEffect(() => {
-    if(audioClue && audioClue >= 5) {
-      setBtnDisabled(false)
+    if (audioClue && audioClue >= 5) {
+      setBtnDisabled(false);
     }
-  }, [audioClue])
+  }, [audioClue]);
 
   if (heroes && quoteHeroes && quoteTries && quoteStatus) {
     // const playSound = () => {
@@ -74,12 +76,12 @@ function QuoteGame() {
     }
 
     return (
-      <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
-        {/* <ClearLocalStorageBtn /> */}
+      <div className="fade-in text-white flex flex-col justify-around items-center w-11/12 mx-auto">
+        <ChangeLanguageBtns />
         {confetti && <Confetti />}
-        <Header />
+        <Header type="quote" />
         <div className="w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
-          <h1 className="text-xl mt-3">Which hero says</h1>
+          <h1 className="text-xl mt-3">{t("Which hero says")}</h1>
 
           <p className="text-3xl w-11/12 text-white mx-auto mt-6 text-center">
             ❝{quoteStatus.quote}❞
@@ -102,12 +104,14 @@ function QuoteGame() {
 
             {audioClue < 6 && audioClue > 0 && !isCorrect ? (
               <div className="mb-2 mt-3 fade-in">
-                <p>Audio Clue in {6 - audioClue} tries</p>
+                <p>
+                  {6 - audioClue} {t("Tries to Audio Clue")}
+                </p>
               </div>
             ) : (
               (audioClue >= 6 || isCorrect) && (
                 <div className=" fade-in">
-                  <p>Audio Clue</p>
+                  <p>{t("Audio Clue")}</p>
                 </div>
               )
             )}
@@ -132,9 +136,10 @@ function QuoteGame() {
               </div>
             )}
           </div>
-
         </div>
-        <p className="mt-2">{`${quoteStatus.count} people already found out`}</p>
+        <p className="mt-2">{`${quoteStatus.count} ${t(
+          "people already found out"
+        )}`}</p>
         <div className="w-5/12 ">
           {quoteTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);

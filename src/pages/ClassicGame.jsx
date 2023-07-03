@@ -5,11 +5,13 @@ import ReactLoading from "react-loading";
 import ClassicCard from "../components/ClassicCard";
 import Header from "../components/Header";
 import Confetti from "../components/Confetti";
-import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
 import { AiFillSound } from "react-icons/ai";
 import staff from "../assets/staff.png";
+import { useTranslation } from "react-i18next";
+import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function ClassicGame() {
+  const { t } = useTranslation();
   const { heroes, classicTries, classicStatus } = useProvider();
   const [classicHeroes, setClassicHeroes] = useState();
   const [renderInput, setRenderInput] = useState(true);
@@ -81,13 +83,13 @@ function ClassicGame() {
 
   if (heroes && classicTries && classicHeroes && classicStatus) {
     return (
-      <div className="fade-in text-white w-11/12 mx-auto flex flex-col lg:mt-16 items-center content-center">
-        {/* <ClearLocalStorageBtn /> */}
+      <div className="fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center">
+        <ChangeLanguageBtns />
         {confetti && <Confetti />}
-        <Header />
+        <Header type="classic" />
         <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">
-          <h3 className="text-3xl my-3">{`Guess Today's Hero!`}</h3>
-          <div className="w-full flex items-center justify-start">
+          <h3 className="text-3xl my-3">{t("Guess Today's Hero!")}</h3>
+          <div className="w-full flex items-center justify-steart">
             {classicClue >= 1 && (
               <div className="flex flex-col fade-in items-center w-1/2">
                 <button
@@ -103,10 +105,10 @@ function ClassicGame() {
                 </button>
                 {classicClue < 7 && !isCorrect ? (
                   <h3 className="text-xs fade-in">
-                    Quote clue in {7 - classicClue} tries
+                    {7 - classicClue} {t("Tries to Quote Clue")}
                   </h3>
                 ) : (
-                  <p className="fade-in text-xs">Quote Clue</p>
+                  <p className="fade-in text-xs">{t("Quote Clue")}</p>
                 )}
               </div>
             )}
@@ -126,10 +128,10 @@ function ClassicGame() {
                 </button>
                 {classicClue < 13 && !isCorrect ? (
                   <h3 className="text-xs fade-in">
-                    Skill Clue in {13 - classicClue} tries
+                    {13 - classicClue} {t("Tries to Skill Clue")}
                   </h3>
                 ) : (
-                  <p className="fade-in text-xs">Skill Clue</p>
+                  <p className="fade-in text-xs">{t("Skill Clue")}</p>
                 )}
               </div>
             )}
@@ -145,7 +147,7 @@ function ClassicGame() {
           </div>
           <div className="">
             {classicTries.length === 0 && (
-              <p className="mb-5">Type a hero to begin</p>
+              <p className="mb-5">{t("Type a hero to begin")}</p>
             )}
             {renderInput && (
               <HeroesInput
@@ -156,51 +158,56 @@ function ClassicGame() {
             )}
           </div>
         </div>
+        <p className="mt-2">{`${classicStatus.count} ${t(
+          "people already found out"
+        )}`}</p>
 
         <div className="w-screen mt-10 fade-in-2">
           {classicTries.length > 0 && (
             <div className="flex items-center justify-center w-7/12 text-sm mx-auto my-2">
               <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Hero{" "}
+                {t("Hero")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Primary Attr
+              <div className="w-1/12 mx-1 mb-4 justify-center text-center flex border-b rounded-full">
+                {t("Primary Attribute")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Gender
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Gender")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Attack Type
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Attack Type")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Base Attack
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Base Attack")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Base Armor
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Base Armor")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Base HP
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Base HP")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Base MP
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Base MP")}
               </div>
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
-                Move Speed
+              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+                {t("Move Speed")}
               </div>
             </div>
           )}
-          {classicTries.map((e) => {
-            return (
-              <ClassicCard
-                lastHero={classicTries[0]}
-                key={e.name}
-                selectedHero={heroes.find((e2) => e2.name === e)}
-                correctHero={heroes.find(
-                  (e2) => e2.name === classicStatus.todayhero
-                )}
-              />
-            );
-          })}
+          <div className="flex justify-center flex-col items-center">
+            {classicTries.map((e) => {
+              return (
+                <ClassicCard
+                  lastHero={classicTries[0]}
+                  key={e.name}
+                  selectedHero={heroes.find((e2) => e2.name === e)}
+                  correctHero={heroes.find(
+                    (e2) => e2.name === classicStatus.todayhero
+                  )}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     );

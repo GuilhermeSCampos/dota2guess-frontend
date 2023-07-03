@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
 import "../index.css";
+import { useTranslation } from "react-i18next";
 
 import { MoveDown, MoveUp } from "lucide-react";
 
 function ClassicCard({ correctHero, selectedHero }) {
+
+  const { t } = useTranslation();
   const {
     primaryAttr: primaryAttr1,
     gender: gender1,
@@ -44,41 +47,41 @@ function ClassicCard({ correctHero, selectedHero }) {
   };
 
   return (
-    <div className="flex items-center text-xm justify-center w-7/12 mx-auto my-2">
+    <div className="flex items-center text-xm justify-center w-7/12 my-2">
       <img src={img} className={`w-1/12 border mx-1 rounded-xl h-2/12 `} />
       <div
-        className={`w-1/12 border mx-1 items-center justify-center flex py-3 rounded-xl ${
-          primaryAttr1 !== primaryAttr2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border mx-1 items-center text-center justify-center flex py-3 rounded-xl transition duration-300 ease-in-out ${
+          primaryAttr1 !== primaryAttr2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
-        {primaryAttr2}
+        {t(primaryAttr2)}
       </div>
       <div
-        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl ${
-          gender1 !== gender2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border mx-1 justify-center text-center flex py-3 rounded-xl transition duration-300 ease-in-out ${
+          gender1 !== gender2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
-        {gender2}
+        {t(gender2)}
       </div>
       <div
-        className={`w-1/12 border mx-1 justify-center flex py-3 rounded-xl ${
-          attackType1 !== attackType2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-28 border mx-1 justify-center text-center flex flex-nowrap whitespace-nowrap py-3 rounded-xl max-h-12 transition duration-300 ease-in-out ${
+          attackType1 !== attackType2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
-        {attackType2}
+        {t(attackType2)}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
-          baseAttack1 !== baseAttack2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border mx-1 flex justify-center text-center py-3 rounded-xl transition duration-300 ease-in-out ${
+          baseAttack1 !== baseAttack2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
         {baseAttack2}
         {compareAttr(Number(correctAttackSum), Number(selectedAttackSum))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
+        className={`w-1/12 border mx-1 flex justify-center text-center py-3 rounded-xl transition duration-300 ease-in-out ${
           Number(baseDefense1) !== Number(baseDefense2)
-            ? "bg-[#e32626a3]"
+            ? "bg-[#e32626a3] hover:bg-[#ff5050a3]"
             : "bg-[#24ad46ce]"
         }`}
       >
@@ -86,24 +89,24 @@ function ClassicCard({ correctHero, selectedHero }) {
         {compareAttr(Number(baseDefense1), Number(baseDefense2))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
-          baseHp1 !== baseHp2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border mx-1 flex justify-center text-center py-3 rounded-xl transition duration-300 ease-in-out ${
+          baseHp1 !== baseHp2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
         {baseHp2}
         {compareAttr(Number(baseHp1), Number(baseHp2))}
       </div>
       <div
-        className={`w-1/12 border mx-1 flex justify-center py-3 rounded-xl ${
-          baseMp1 !== baseMp2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border mx-1 flex justify-center text-center py-3 rounded-xl transition duration-300 ease-in-out ${
+          baseMp1 !== baseMp2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
         {baseMp2}
         {compareAttr(Number(baseMp1), Number(baseMp2))}
       </div>
       <div
-        className={`w-1/12 border-x border-y mx-1 flex justify-center py-3 rounded-xl ${
-          moveSpeed1 !== moveSpeed2 ? "bg-[#e32626a3]" : "bg-[#24ad46ce]"
+        className={`w-1/12 border-x border-y mx-1 flex text-center justify-center py-3 rounded-xl transition duration-300 ease-in-out ${
+          moveSpeed1 !== moveSpeed2 ? "bg-[#e32626a3] hover:bg-[#ff5050a3]" : "bg-[#24ad46ce] hover:bg-[#49bb66ce]"
         }`}
       >
         {moveSpeed2}

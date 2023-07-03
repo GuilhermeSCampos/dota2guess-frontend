@@ -5,7 +5,7 @@
 body {
   background-image: url("assets/jugger.jpg");
   background-repeat: no-repeat;
-  background-size: fit-content;
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-color: rgba(0, 0, 0, 0.5); /* Valor de opacidade: 0.5 */
@@ -15,7 +15,12 @@ body {
 .background-overlay {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* Define a cor de fundo com opacidade */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Define a cor de fundo com opacidade */
   overflow-x: hidden;
 }
 
@@ -294,7 +299,6 @@ input[type="range"]::-webkit-slider-thumb {
   width: 1rem;
 }
 
-
 /*********** Firefox styles ***********/
 /* slider track */
 input[type="range"]::-moz-range-track {
@@ -417,4 +421,32 @@ input[type="range"]::-moz-range-thumb {
   }
 }
 
+.about {
+  opacity:0; /* Define a opacidade inicial como 0 */
+  transition: opacity 0.3s; /* Adiciona uma transição suave */
+  position: absolute; /* Define a posição como absoluta */
+  z-index: 1; /* Define o índice de camada como 1 */
+}
 
+/* Regra de hover aplicada ao elemento que dispara o efeito */
+.trigger-about:hover + .about {
+  opacity: 1; /* Define a opacidade como 1 quando o elemento for hover */
+  z-index: 2;
+}
+
+.countdown span.seconds {
+  display: inline-block;
+  animation: countdown-animation-seconds 1s infinite;
+}
+
+@keyframes countdown-animation-seconds {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

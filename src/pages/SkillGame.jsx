@@ -5,19 +5,21 @@ import ReactLoading from "react-loading";
 import TryCard from "../components/TryCard";
 import Header from "../components/Header";
 import staff from "../assets/staff.png";
-import ClearLocalStorageBtn from "../components/ClearLocalStorageBtn";
 import Confetti from "../components/Confetti";
+import { useTranslation } from "react-i18next";
+import ChangeLanguageBtns from "../components/ChangeLanguageBtns";
 
 function SkillGame() {
+  const { t } = useTranslation();
   const { heroes, skillTries, skillStatus } = useProvider();
   const [skillHeroes, setSkillHeroes] = useState();
   const [rotation, setRotation] = useState("");
-  const [isCorrect, setIsCorrect] = useState(false)
+  const [isCorrect, setIsCorrect] = useState(false);
   const [renderInput, setRenderInput] = useState(true);
   const [skillClue, setSkillClue] = useState(0);
   const [skillNameHidden, setSkillNameHidden] = useState("hidden");
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [confetti, setConfetti] = useState(false)
+  const [confetti, setConfetti] = useState(false);
 
   useEffect(() => {
     if (skillStatus) {
@@ -48,30 +50,30 @@ function SkillGame() {
       setSkillHeroes(filteredHeroes);
       setSkillClue(skillTries.length);
       if (skillTries.includes(skillStatus.todayhero)) {
-        setConfetti(true)
-        setBtnDisabled(false)
-        setIsCorrect(true)
+        setConfetti(true);
+        setBtnDisabled(false);
+        setIsCorrect(true);
         setRenderInput(false);
       }
     }
   }, [skillTries, heroes]);
 
   useEffect(() => {
-    if(skillClue && skillClue >= 5) {
-      setBtnDisabled(false)
+    if (skillClue && skillClue >= 5) {
+      setBtnDisabled(false);
     }
-  }, [skillClue])
+  }, [skillClue]);
 
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
-      <div className="fade-in text-white flex flex-col justify-around lg:mt-16 items-center w-11/12 mx-auto">
+      <div className="fade-in text-white flex flex-col justify-around items-center w-11/12 mx-auto">
+        <ChangeLanguageBtns />
         {confetti && <Confetti />}
-        {/* <ClearLocalStorageBtn /> */}
-        <Header />
+        <Header type="skill" />
         <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
-            <h2 className="text-white text-2xl mt-3">
-              Which hero is this skill from?
+            <h2 className="text-white text-2xl text-center mt-3">
+              {t("Which hero is this skill from?")}
             </h2>
             <img
               className={`grayscale ${rotation} border-2 border-white rounded-md w-4/12 select-none pointer-events-none mx-auto my-5`}
@@ -95,10 +97,10 @@ function SkillGame() {
                 </button>
                 {skillClue < 5 && !isCorrect ? (
                   <h3 className="text-base fade-in">
-                    Skill Name in {5 - skillClue} tries
+                    {5 - skillClue} {t("Tries to Skill Name")}
                   </h3>
                 ) : (
-                  <p className="fade-in text-sm">Name Clue</p>
+                  <p className="fade-in text-sm">{t("Name Clue")}</p>
                 )}
                 <p className={`fade-in mt-5 ${skillNameHidden}`}>
                   {skillStatus.skillname}
@@ -116,9 +118,10 @@ function SkillGame() {
               />
             </div>
           )}
-
         </div>
-        <p className="mt-2">{`${skillStatus.count} people already found out`}</p>
+        <p className="mt-2">{`${skillStatus.count} ${t(
+          "people already found out"
+        )}`}</p>
         <div className="w-5/12 ">
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);

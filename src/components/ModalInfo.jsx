@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
 import { AiFillInfoCircle } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 const style = {
   position: "absolute",
@@ -13,12 +14,13 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: "60%",
   bgcolor: "rgb(11, 11, 11)",
-  border: "2px solid ",
+  border: "4px solid white",
   boxShadow: 24,
   p: 5,
 };
 
-export default function TransitionsModal() {
+export default function ModalInfo() {
+  const { t } = useTranslation()
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -51,16 +53,15 @@ export default function TransitionsModal() {
               variant="h6"
               component="h2"
             >
-              <h1 className="text-5xl">About</h1>
+              <h1 className="text-5xl">{t("About")}</h1>
               <hr />
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              <p className="text-2xl">Guess a hero daily!</p>
+              <p className="text-2xl">{t("Guess a hero daily!")}</p>
               <br />
               <br />
               <p className="text-lg">
-                Dota2Guess was created for fun and practicing purposes only and
-                greatly inspired By:{" "}
+                {t("Dota2Guess was created for fun and practicing purposes only and greatly inspired By:")}{" "}
                 <a
                   href="https://term.ooo/"
                   target="blank"
@@ -68,7 +69,7 @@ export default function TransitionsModal() {
                 >
                   Termo{" "}
                 </a>
-                and{"  "}
+                {t("and")}{"  "}
                 <a
                   href="https://loldle.net/"
                   target="blank"
@@ -79,12 +80,12 @@ export default function TransitionsModal() {
               </p>
               <br />
               <p className="text-lg">
-                Valve Corporation DOES NOT endorse or sponsor this project.
+                {t("Valve Corporation DOES NOT endorse or sponsor this project.")}
               </p>
               <br />
               <br />
               <p>
-                Background URL:{" "}
+                {t("Background URL: ")}{" "}
                 <a
                   href="https://dmarket.com/blog/best-dota2-wallpapers/jager1_hu1b4a36ef01c87d5ebc4581a2b5b7191b_364471_1920x1080_resize_q100_lanczos.jpg"
                   target="blank"
@@ -99,10 +100,10 @@ export default function TransitionsModal() {
               <h1 className="text-5xl">Feedbacks</h1>
               <hr />
               <br />
-              <p className="text-lg">Have a suggestion or found an error?🤠</p>
+              <p className="text-lg">{t("Have a suggestion or found an error?🤠")}</p>
               <p className="text-lg">
                 {" "}
-                Send me a mail {` -->  inabanhimekoo@gmail.com`}{" "}
+                {t("Send me a mail")} {` -->  inabanhimekoo@gmail.com`}{" "}
               </p>
             </Typography>
           </Box>

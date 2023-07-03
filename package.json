@@ -17,14 +17,17 @@
     "axios": "^1.4.0",
     "framer-motion": "^10.12.17",
     "howler": "^2.2.3",
+    "i18next": "^23.2.6",
     "lucide-react": "^0.244.0",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.1",
     "react-icons": "^4.10.1",
     "react-loading": "^2.0.3",
     "react-router-dom": "^6.11.1",
+    "styled-components": "^6.0.2",
     "tw-elements": "^1.0.0-beta2"
   },
   "devDependencies": {

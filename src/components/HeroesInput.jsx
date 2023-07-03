@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useProvider } from "../context/Provider";
 import { GiBroadDagger } from "react-icons/gi";
+import { useTranslation } from "react-i18next";
 
 const SUM_QUOTE_COUNT_URL =
   "https://dota2guess-backend.vercel.app/status/quotecount";
@@ -10,6 +11,7 @@ const SUM_SKILL_COUNT_URL =
   "https://dota2guess-backend.vercel.app/status/skillcount";
 
 export default function HeroesInput({ heroes, type }) {
+  const { t } = useTranslation()
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
   const {
@@ -84,7 +86,7 @@ export default function HeroesInput({ heroes, type }) {
           id="default-input"
           value={value}
           onChange={onChange}
-          placeholder="Type a hero name"
+          placeholder={t("Type a hero name")}
           onFocus={({ target }) =>
             heroes.some((e) =>
               e.name.toLowerCase().startsWith(target.value.toLowerCase())
