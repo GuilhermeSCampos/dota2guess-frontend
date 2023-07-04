@@ -10,8 +10,11 @@ const SUM_QUOTE_COUNT_URL =
 const SUM_SKILL_COUNT_URL =
   "https://dota2guess-backend.vercel.app/status/skillcount";
 
+const SUM_CLASSIC_COUNT_URL =
+  "https://dota2guess-backend.vercel.app/status/classiccount";
+
 export default function HeroesInput({ heroes, type }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const [value, setValue] = useState("");
   const [renderList, setRenderList] = useState(false);
   const {
@@ -22,6 +25,8 @@ export default function HeroesInput({ heroes, type }) {
     skillStatus,
     setSkillStatus,
     submitClassicHero,
+    classicStatus,
+    setClassicStatus
   } = useProvider();
 
   const onChange = ({ target }) => {
@@ -39,9 +44,9 @@ export default function HeroesInput({ heroes, type }) {
     }
   };
 
-  const onClick1 = ({target}) => {
+  const onClick1 = ({ target }) => {
     if (target.localName === "img") {
-      setValue(target.name)
+      setValue(target.name);
     } else {
       setValue(target.innerText);
     }
@@ -73,6 +78,11 @@ export default function HeroesInput({ heroes, type }) {
 
     if (type === "classic") {
       submitClassicHero(hero);
+      if (value === classicStatus.todayhero) {
+        await fetch(SUM_CLASSIC_COUNT_URL, { method: "PUT" });
+        const newStatus = { ...classicStatus };
+        setClassicStatus({ ...newStatus, count: newStatus.count + 1 });
+      }
     }
 
     return setValue("");
@@ -143,10 +153,11 @@ export default function HeroesInput({ heroes, type }) {
                       className="w-14 border-solid border-2 border-black"
                       src={val.img}
                       alt={val.name}
-  
                       name={val.name}
                     />
-                    <p name={val.name} className="text-neutral-50 pt-1">{val.name}</p>
+                    <p name={val.name} className="text-neutral-50 pt-1">
+                      {val.name}
+                    </p>
                   </div>
                 );
               })}

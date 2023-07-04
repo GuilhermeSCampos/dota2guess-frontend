@@ -104,6 +104,7 @@ export const DotaProvider = (props) => {
         submitClassicHero,
         isTransitioning,
         setIsTransitioning,
+        setClassicStatus,
       }}
     >
       {props.children}
