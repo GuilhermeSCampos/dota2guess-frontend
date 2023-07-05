@@ -17,7 +17,7 @@ Tecnologias que eu utilizei para desenvolver:
 
 ## 💻 Começando
 
-**Clone o projeto em sua máquina**
+**Clone o projeto em sua máquina e acesse o diretório**
 
 ```bash
  git clone git@github.com:GuilhermeSCampos/dota2guess-frontend.git && cd dota2guess-frontend
