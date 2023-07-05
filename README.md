@@ -4,6 +4,7 @@
 
 <h4 align="start">Projeto de um jogo de quiz de Dota 2.</h4>
 
+https://github.com/GuilhermeSCampos/dota2guess-frontend/assets/82980024/7e9ac002-939e-40f5-8473-a04667385e57
 
 ## 🚀 Tecnologias
 
