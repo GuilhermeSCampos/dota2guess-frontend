@@ -33,4 +33,4 @@ Tecnologias que eu utilizei para desenvolver:
  npm run dev
 ```
 **Bom Jogo :)**
-## Deploy na Vercel --> https://dota2guess-frontend.vercel.app/)https://dota2guess-frontend.vercel.app
+##### Deploy na Vercel --> https://dota2guess-frontend.vercel.app/)https://dota2guess-frontend.vercel.app
