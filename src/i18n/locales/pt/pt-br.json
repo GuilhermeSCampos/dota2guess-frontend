@@ -73,7 +73,7 @@
     "Base HP:": "HP Base:",
     "Oracle's base HP is lower than Gyrocopter's!": "O HP base do Oracle é menor do que o do Gyrocopter!",
     "Base MP:": "MP Base:",
-    "Oracle's base MP is lower than Gyrocopter's!": "O MP base do Oracle é menor do que o do Gyrocopter!",
+    "Oracle's base MP is greater than Gyrocopter's!": "O MP base do Oracle é maior do que o do Gyrocopter!",
     "Move Speed:": "Velocidade de Movimento:",
     "Oracle's base move speed is lower than Gyrocopter's!": "A velocidade de movimento base do Oracle é menor do que a do Gyrocopter!",
     "Then, if you guess it correctly, this will appear:": "Então, se você adivinhar corretamente, isso aparecerá:",

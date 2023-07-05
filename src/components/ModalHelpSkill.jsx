@@ -19,7 +19,7 @@ const style = {
   border: "2px solid ",
   boxShadow: 24,
   p: 5,
-  height: "auto",
+  height: "90%",
   overflowX: "hidden",
   display: "block",
 };
@@ -60,25 +60,25 @@ export default function ModalHelp() {
                 variant="h6"
                 component="h2"
               >
-                <h1 className="text-5xl">{t("How to Play")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("How to Play")}</h1>
                 <hr />
               </Typography>
               <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                <p className="text-xl">
+                <p className="lg:text-xl">
                   {t("Guess a hero from Dota 2 everyday! It resets every 24h.")}
                 </p>
                 <div className="text-5xl my-12 flex justify-center">
-                  <div>
-                    <p className="text-lg text-center">{t("Next hero in:")}</p>
+                  <div className="flex-col text-center items-center">
+                    <p className="lg:text-lg  text-sm text-center">{t("Next hero in:")}</p>
                     <Countdown />
                     <p className="text-xs mt-4 text-center">
                       {t("Midnight at UTC-3")}
                     </p>
                   </div>
                 </div>
-                <h1 className="text-5xl">{t("Skill Game")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("Skill Game")}</h1>
                 <hr></hr>
-                <div className="mt-5 text-lg">
+                <div className="mt-5 lg:text-xl">
                   <p>
                     {t(
                       "In skill mode, you will need to guess which hero has the skill icon displayed in the least number of tries."

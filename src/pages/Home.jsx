@@ -31,13 +31,13 @@ function Home() {
       {/* Logo com tamanho escalonado, com transição de 0.75s e margem de 10px no topo */}
       {/* </div> */}
       {/* </div> */}
-      <div className="flex flex-col items-center w-11/12 h-2/6 mx-auto mt-1">
+      <div className="flex flex-col items-center w-11/12 h-fit mx-auto mt-1">
         {/* Div que contém os botões e opções de game */}
         {gameOptions.map((gameOption, i) => (
           <button
             key={i}
-            className="flex flex-col justify-between items-center hover:translate-y-1 game-card text-4xl border-2 border-teal-900 bg-gray-900/90 hover:bg-gray-800/90
-             text-white py-2 px-4 rounded-md w-3/12 mx-5 my-5 transition ease-in-out duration-200"
+            className="2xl:w-3/12 xl:w-4/12 lg:w-5/12 md:w-6/12 sm:w-8/12 w-11/12 flex flex-col justify-between items-center hover:translate-y-1 game-card text-4xl border-2 border-teal-900 bg-gray-900/90 hover:bg-gray-800/90
+             text-white py-2 px-4 rounded-md  mx-5 my-5 transition ease-in-out duration-200"
             onClick={() => navigate(`/${gameOption.toLowerCase()}`)}
           >
             {t(gameOption)}

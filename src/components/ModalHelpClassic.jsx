@@ -22,12 +22,12 @@ const style = {
   boxShadow: 24,
   p: 5,
   height: "95%",
-  overflowX: "hidden",
+  overflowX: "auto",
   display: "block",
 };
 
 export default function ModalHelp() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { heroes } = useProvider();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -62,48 +62,57 @@ export default function ModalHelp() {
                 variant="h6"
                 component="h2"
               >
-                <h1 className="text-5xl">{t("How to Play")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("How to Play")}</h1>
                 <hr />
               </Typography>
               <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                <p className="text-xl">
+                <p className="lg:text-xl">
                   {t("Guess a hero from Dota 2 everyday! It resets every 24h.")}
                 </p>
                 <div className="text-5xl my-12 flex justify-center">
                   <div>
-                    <p className="text-lg text-center">{t("Next hero in:")}</p>
+                    <p className="lg:text-lg  text-sm text-center">{t("Next hero in:")}</p>
                     <Countdown />
                     <p className="text-xs mt-4 text-center">
                       {t("Midnight at UTC-3")}
                     </p>
                   </div>
                 </div>
-                <h1 className="text-5xl">{t("Classic Game")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("Classic Game")}</h1>
                 <hr></hr>
                 <div>
-                  <p className="my-2 text-lg">
-                    {t("Get started by choosing any hero and it will show its properties.")}
+                  <p className="my-2 lg:text-xl">
+                    {t(
+                      "Get started by choosing any hero and it will show its properties."
+                    )}
                   </p>
-                  <p className="my-2 text-lg">
-                    {t("Guide yourself by the colors and the arrows that will show up.")}
+                  <p className="my-2 lg:text-xl">
+                    {t(
+                      "Guide yourself by the colors and the arrows that will show up."
+                    )}
                   </p>
-                  <p className="my-2 text-lg">
-                    <span className="text-[#43A047]">{t("Green")}</span> {t("indicates a correct property")}
+                  <p className="my-2 lg:text-xl">
+                    <span className="text-[#43A047]">{t("Green")}</span>{" "}
+                    {t("indicates a correct property")}
                   </p>
-                  <p className="my-3 text-lg">
-                    <span className="text-[#E53935]">{t("Red")}</span> {t("indicates a wrong property")}
+                  <p className="my-3 lg:text-xl">
+                    <span className="text-[#E53935]">{t("Red")}</span>{" "}
+                    {t("indicates a wrong property")}
                   </p>
                   <div className="flex text-lg">
-                    <MoveDown size={20} /> <MoveUp size={20} />
+                    <MoveDown className="lg:w-[30px] w-[100px]"/> <MoveUp className="lg:w-[30px] w-[100px]"/>
                     <p>
-                      {t("These arrows will indicate if the correct answer is below or above your guess")}
+                      {t(
+                        "These arrows will indicate if the correct answer is below or above your guess"
+                      )}
                     </p>
                   </div>
                   <h1 className="text-2xl mt-5">{t("Example:")}</h1>
                   <p>{t("Consider the correct answer is Oracle")}</p>
                   <p>{t("If you enter Gyrocopter, this will apear:")}</p>
-                  <div className="w-screen flex justify-start my-5">
+                  <div className="w-screen flex my-5">
                     <ClassicCard
+                      justify="justify-start"
                       correctHero={heroes.find((e) => e.name === "Oracle")}
                       selectedHero={heroes.find((e) => e.name === "Gyrocopter")}
                     />
@@ -119,7 +128,8 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                    {t("Gender: ")}<span className="text-[#43A047]">{t("Green")}</span>
+                      {t("Gender: ")}
+                      <span className="text-[#43A047]">{t("Green")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle is Male, so its an exact match!")}
@@ -127,7 +137,8 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Attack Type:")} <span className="text-[#43A047]">{t("Green")}</span>
+                      {t("Attack Type:")}{" "}
+                      <span className="text-[#43A047]">{t("Green")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle is Ranged, so its an exact match!")}
@@ -135,7 +146,8 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Base Attack:")} <span className="text-[#E53935]">{t("Red")}</span>
+                      {t("Base Attack:")}{" "}
+                      <span className="text-[#E53935]">{t("Red")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle's basic attack is lower than Gyrocopter's!")}
@@ -143,7 +155,8 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Base Armor:")} <span className="text-[#E53935]">{t("Red")}</span>
+                      {t("Base Armor:")}{" "}
+                      <span className="text-[#E53935]">{t("Red")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle's basic armor is lower than Gyrocopter's!")}
@@ -151,7 +164,8 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Base HP:")} <span className="text-[#E53935]">{t("Red")}</span>
+                      {t("Base HP:")}{" "}
+                      <span className="text-[#E53935]">{t("Red")}</span>
                     </h2>
                     <p className="text-lg">
                       {t("Oracle's base HP is lower than Gyrocopter's!")}
@@ -159,30 +173,37 @@ export default function ModalHelp() {
                   </div>
                   <div className="text-xl mt-10">
                     <h2>
-                      {t("Base MP:")} <span className="text-[#E53935]">{t("Red")}</span>
+                      {t("Base MP:")}{" "}
+                      <span className="text-[#E53935]">{t("Red")}</span>
                     </h2>
                     <p className="text-lg">
-                      {t("Oracle's base MP is lower than Gyrocopter's!")}
+                      {t("Oracle's base MP is greater than Gyrocopter's!")}
                     </p>
                   </div>
                   <div className="text-xl mt-10">
-                    <h2>
-                      {t("Move Speed:")} <span className="text-[#E53935]">{t("Red")}</span>
+                    <h2 className="">
+                      {t("Move Speed:")}{" "}
+                      <span className="text-[#E53935]">{t("Red")} </span>
                     </h2>
                     <p className="text-lg">
-                      {t("Oracle's base move speed is lower than Gyrocopter's!")}
+                      {t(
+                        "Oracle's base move speed is lower than Gyrocopter's!"
+                      )}
                     </p>
                   </div>
                   <p className="text-xl mt-5">
                     {t("Then, if you guess it correctly, this will appear:")}
                   </p>
-                  <div className="w-screen flex justify-start my-5">
+                  <div className="w-screen flex my-5">
                     <ClassicCard
+                      justify="justify-start"
                       correctHero={heroes.find((e) => e.name === "Oracle")}
                       selectedHero={heroes.find((e) => e.name === "Oracle")}
                     />
                   </div>
-                  <p className="mt-8">{t(`I hope you have a good time playing! :)`)}</p>
+                  <p className="mt-8">
+                    {t(`I hope you have a good time playing! :)`)}
+                  </p>
                 </div>
               </Typography>
             </Box>

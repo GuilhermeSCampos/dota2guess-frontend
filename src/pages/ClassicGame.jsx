@@ -92,7 +92,7 @@ function ClassicGame() {
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="classic" />
-        <div className="w-1/5 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className="2xl:w-1/5 xl:w-3/12 lg:w-4/12 md:w-5/12 sm:w-5/12 mt-5 bg-gray-800 pb-4 flex text-center border-sky-900 flex-col items-center px-5 rounded-xl border-2">
           <h3 className="text-3xl my-3">{t("Guess Today's Hero!")}</h3>
           <div className="w-full flex items-center justify-steart">
             {classicClue >= 1 && (
@@ -100,7 +100,7 @@ function ClassicGame() {
                 <button
                   disabled={quoteBtnDisabled}
                   onClick={handleAudioBox}
-                  className={`border rounded-full p-1 fade-in transition duration-300 text-white  ${
+                  className={`border rounded-full p-1   fade-in transition duration-300 text-white  ${
                     classicClue < 7 && !isCorrect
                       ? "hover:bg-red-700"
                       : "audio-btn hover:bg-gray-700/80"
@@ -121,7 +121,7 @@ function ClassicGame() {
               <div className="flex flex-col fade-in items-center w-1/2">
                 <button
                   disabled={skillBtnDisabled}
-                  className={`text-white  w-3/12 mx-auto border p-2 border-slate-500 rounded-full 
+                  className={`text-white  lg:w-3/12 xs:w-4/12  w-1/2 mx-auto border p-2 border-slate-500 rounded-full 
                   ${
                     skillBtnDisabled
                       ? "bg-gray-700 hover:bg-slate-500"
@@ -167,42 +167,43 @@ function ClassicGame() {
           "people already found out"
         )}`}</p>
 
-        <div className="w-screen mt-10 fade-in-2">
+        <div className="w-screen mt-10 flex justify-center fade-in-2 ">  
+          <div className="flex justify-center lg:w-screen  items-start lg:items-center mx-auto flex-col overflow-auto">
           {classicTries.length > 0 && (
-            <div className="flex items-center justify-center w-7/12 text-sm mx-auto my-2">
-              <div className="w-1/12 mx-1 justify-center flex border-b rounded-full">
+            <div className="flex items-center justify-center lg:w-8/12 w-[800px] text-sm mx-auto my-2">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1  ml-1 items-center justify-center flex border-b rounded-full">
                 {t("Hero")}
               </div>
-              <div className="w-1/12 mx-1 mb-4 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 ml-5 items-center justify-center text-center flex border-b rounded-full">
                 {t("Primary Attribute")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Gender")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Attack Type")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Base Attack")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Base Armor")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Base HP")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Base MP")}
               </div>
-              <div className="w-1/12 mx-1 justify-center text-center flex border-b rounded-full">
+              <div className="lg:w-1/12 w-[100px] lg:mx-1 items-center justify-center text-center flex border-b rounded-full">
                 {t("Move Speed")}
               </div>
             </div>
           )}
-          <div className="flex justify-center flex-col items-center">
             {classicTries.map((e) => {
               return (
                 <ClassicCard
+                  justify={"justify-center"}
                   lastHero={classicTries[0]}
                   key={e.name}
                   selectedHero={heroes.find((e2) => e2.name === e)}

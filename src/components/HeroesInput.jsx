@@ -130,7 +130,7 @@ export default function HeroesInput({ heroes, type }) {
 
       {renderList && (
         <div className="flex w-1/2 ">
-          <div className="z-50 absolute ml-2 w-2/12 max-h-72 scrollbar scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
+          <div className="2xl:w-2/12 xl:w-1/5 lg:w-1/5 md:w-3/12 sm:w-4/12 xs:w-7/12  w-8/12 z-50 absolute ml-2  max-h-72 scrollbar scrollbar-thumb-rose-800 scrollbar-track-rose-950 overflow-auto">
             {heroes
               .filter((val) => {
                 if (value == "") {

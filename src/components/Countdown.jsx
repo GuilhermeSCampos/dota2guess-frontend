@@ -43,8 +43,8 @@ const Countdown = () => {
   return (
     <div className="countdown">
       {countdown && (
-        <div>
-          <span>{countdown.hours.toString().padStart(2, "0")}</span>:
+        <div className="lg:text-5xl text-xl">
+          <span className="">{countdown.hours.toString().padStart(2, "0")}</span>:
           <span>{countdown.minutes.toString().padStart(2, "0")}</span>:
           <span className="seconds">
             {countdown.seconds.toString().padStart(2, "0")}

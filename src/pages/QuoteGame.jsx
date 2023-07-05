@@ -82,7 +82,7 @@ function QuoteGame() {
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="quote" />
-        <div className="w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className="2xl:w-1/5 xl:w-3/12 lg:w-4/12 md:w-5/12 sm:w-5/12 xs:w-11/12 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
           <h1 className="text-xl mt-3">{t("Which hero says")}</h1>
 
           <p className="text-3xl w-11/12 text-white mx-auto mt-6 text-center">
@@ -142,7 +142,7 @@ function QuoteGame() {
         <p className="mt-2">{`${quoteStatus.count} ${t(
           "people already found out"
         )}`}</p>
-        <div className="w-5/12 ">
+        <div className="sm:w-5/12 xs:w-7/12">
           {quoteTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
 

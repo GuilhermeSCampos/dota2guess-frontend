@@ -23,13 +23,13 @@ const ChangeLanguageBtns = ({ type }) => {
   return (
     <div className={`w-screen flex ${type === "home" ? "justify-end" : "justify-between"} text-white mt-2 items-center`}>
       <button className={backButtonClass}>
-        <BiLeftArrowAlt size={50} onClick={() => navigate('/')} />
+        <BiLeftArrowAlt className='backHome ml-3' size={40} onClick={() => navigate('/')} />
       </button>
       <div className={`mr-4 ${languageButtonsClass}`}>
-        <button className="text-lg mx-2" onClick={() => changeLanguage('pt-BR')}>
+        <button className="text-lg mx-2 lngBtn" onClick={() => changeLanguage('pt-BR')}>
           {t('PT')}
         </button>
-        <button className="text-lg mx-2" onClick={() => changeLanguage('en-us')}>
+        <button className="text-lg mx-2 lngBtn" onClick={() => changeLanguage('en-us')}>
           {t('EN')}
         </button>
       </div>

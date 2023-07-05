@@ -67,20 +67,24 @@ function SkillGame() {
   if (heroes && skillTries && skillStatus && skillHeroes) {
     return (
       <div
-        className={`fade-in text-white w-11/12 mx-auto flex flex-col items-center content-center ${
+        className={`fade-in text-white w-screen mx-auto flex flex-col items-center content-center ${
           isTransitioning ? "fade-out-btn" : "fade-in-btn"
         }`}
       >
         <ChangeLanguageBtns />
         {confetti && <Confetti />}
         <Header type="skill" />
-        <div className=" w-1/5 mt-5 bg-gray-800 pb-5 flex border-sky-900 flex-col items-center rounded-xl border-2">
+        <div className="2xl:w-1/5 xl:w-3/12 lg:w-4/12 md:w-5/12 sm:w-5/12 mt-5 bg-gray-800 pb-5 flex w-10/12 border-sky-900 flex-col items-center rounded-xl border-2">
           <div className="">
             <h2 className="text-white text-2xl text-center mt-3">
               {t("Which hero is this skill from?")}
             </h2>
             <img
-              className={`grayscale ${rotation} border-2 border-white rounded-md w-4/12 select-none pointer-events-none mx-auto my-5`}
+              className={`${
+                skillTries.includes(skillStatus.todayhero)
+                  ? "animate-img"
+                  : `grayscale ${rotation}`
+              } border-2 border-white rounded-md w-4/12 select-none pointer-events-none mx-auto my-5`}
               src={skillStatus.skillimg}
             />
           </div>
@@ -126,7 +130,7 @@ function SkillGame() {
         <p className="mt-2">{`${skillStatus.count} ${t(
           "people already found out"
         )}`}</p>
-        <div className="w-5/12 ">
+        <div className="sm:w-5/12 xs:w-7/12">
           {skillTries.map((heroName) => {
             const hero = heroes.find((e) => e.name === heroName);
 

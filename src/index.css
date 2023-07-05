@@ -12,6 +12,12 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.testeaa {
+  background-image: url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/muerta_gunslinger.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .background-overlay {
   width: 100vw;
   height: 100vh;
@@ -460,3 +466,27 @@ input[type="range"]::-moz-range-thumb {
   opacity: 0;
   transition: opacity 0.5s ease-out;
 }
+
+.backHome, .lngBtn {
+  color: rgb(167, 167, 172);
+
+  transition: 0.3s ease-in-out;
+}
+
+.backHome:hover, .lngBtn:hover {
+  color: rgb(235, 235, 243);
+}
+
+.animate-img {
+  animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

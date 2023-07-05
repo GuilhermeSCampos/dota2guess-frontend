@@ -19,9 +19,10 @@ const style = {
   border: "2px solid ",
   boxShadow: 24,
   p: 5,
-  height: "auto",
+  height: "90%",
   overflowX: "hidden",
   display: "block",
+  overflowY: "auto",
 };
 
 export default function ModalHelp() {
@@ -60,28 +61,40 @@ export default function ModalHelp() {
                 variant="h6"
                 component="h2"
               >
-                <h1 className="text-5xl">{t("How to Play")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("How to Play")}</h1>
                 <hr />
               </Typography>
               <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                <p className="text-xl">
+                <p className="lg:text-xl">
                   {t("Guess a hero from Dota 2 everyday! It resets every 24h.")}
                 </p>
                 <div className="text-5xl my-12 flex justify-center">
                   <div>
-                    <p className="text-lg text-center">{t("Next hero in:")}</p>
+                    <p className="lg:text-lg  text-sm text-center">
+                      {t("Next hero in:")}
+                    </p>
                     <Countdown />
                     <p className="text-xs mt-4 text-center">
                       {t("Midnight at UTC-3")}
                     </p>
                   </div>
                 </div>
-                <h1 className="text-5xl">{t("Quote Game")}</h1>
+                <h1 className="lg:text-5xl text-2xl">{t("Quote Game")}</h1>
                 <hr></hr>
-                <div className="mt-5 text-lg">
-                  <p>{t("In quote mode, you will need to guess which hero says the sentence during heroes selection or when the game begins.")}</p>
-                  <p className="my-2">{t("You can listen to the quote after a certain number of tries or if you guess it correctly before.")}</p>
-                  <p className="mt-8">{t(`I hope you have a good time playing! :)`)}</p>
+                <div className="mt-5 lg:text-xl">
+                  <p>
+                    {t(
+                      "In quote mode, you will need to guess which hero says the sentence during heroes selection or when the game begins."
+                    )}
+                  </p>
+                  <p className="my-2">
+                    {t(
+                      "You can listen to the quote after a certain number of tries or if you guess it correctly before."
+                    )}
+                  </p>
+                  <p className="mt-8">
+                    {t(`I hope you have a good time playing! :)`)}
+                  </p>
                 </div>
               </Typography>
             </Box>
