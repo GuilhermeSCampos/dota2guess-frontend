@@ -6,6 +6,11 @@
 
 https://github.com/GuilhermeSCampos/dota2guess-frontend/assets/82980024/7e9ac002-939e-40f5-8473-a04667385e57
 
+## Funcionalidades
+  Dota2Guess é um quiz de Dota 2 com 3 categorias: clássico, fala e habilidade. <br/>
+  O jogador terá de advinhar o herói do dia por seus atributos, fala, e imagem de habilidade respectivamente. <br/>
+  O horário de reset é Meia Noite (UTC-3).
+
 ## 🚀 Tecnologias
 
 Tecnologias que eu utilizei para desenvolver:
@@ -16,7 +21,7 @@ Tecnologias que eu utilizei para desenvolver:
 - [i18n](https://www.i18next.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
 
-## 💻 Começando
+## 💻 Como Usar
 
 **Clone o projeto em sua máquina e acesse o diretório**
 
