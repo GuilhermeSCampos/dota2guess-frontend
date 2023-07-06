@@ -10,6 +10,7 @@ https://github.com/GuilhermeSCampos/dota2guess-frontend/assets/82980024/7e9ac002
   Dota2Guess é um quiz de Dota 2 com 3 categorias: clássico, fala e habilidade. <br/>
   O jogador terá de advinhar o herói do dia por seus atributos, fala, e imagem de habilidade respectivamente. <br/>
   O horário de reset é Meia Noite (UTC-3).
+  Possui design responsivo.
 
 ## 🚀 Tecnologias
 
