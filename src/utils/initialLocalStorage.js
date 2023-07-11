@@ -11,7 +11,8 @@ const createLocalStorage = () => {
       classic: [],
       skill: [],
       quote: []
-    }
+    },
+    isCacheCleared: false
   }
 
   return data

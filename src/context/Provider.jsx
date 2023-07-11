@@ -25,6 +25,25 @@ export const DotaProvider = (props) => {
     setSkillStatus(data.skill);
   };
 
+  //Limpar cache do usuário
+  const clearCache = () => {
+    const playerData = JSON.parse(localStorage.getItem("dota2guess"));
+    if (playerData.isCacheCleared === false) {
+      console.log("limpou");
+      const uniqueParam = new URLSearchParams({
+        timestamp: Date.now(),
+      }).toString();
+      const currentUrl = new URL(window.location.href);
+      currentUrl.search = uniqueParam;
+      window.location.href = currentUrl.toString();
+      playerData.isCacheCleared = true;
+      localStorage.setItem("dota2guess", JSON.stringify(playerData));
+    } else {
+      const urlWithoutTimestamp = window.location.href.replace(/[\?&]timestamp=\d+/, '');
+      window.history.replaceState({}, document.title, urlWithoutTimestamp);
+    }
+  };
+
   const checkLocalStorage = () => {
     const playerData = JSON.parse(localStorage.getItem("dota2guess"));
     if (playerData) {
@@ -35,6 +54,7 @@ export const DotaProvider = (props) => {
         playerData.games.classic = [];
         playerData.games.skill = [];
         playerData.games.quote = [];
+        playerData.isCacheCleared = false;
         setClassicTries([]);
         setQuoteTries([]);
         setSkillTries([]);
@@ -82,6 +102,7 @@ export const DotaProvider = (props) => {
   useEffect(() => {
     fetchData();
     checkLocalStorage();
+    clearCache();
   }, []);
 
   return (
